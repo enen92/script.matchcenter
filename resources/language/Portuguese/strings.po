@@ -221,9 +221,9 @@ msgid "seconds..."
 msgstr "segundos..."
 
 msgctxt "#32052"
-msgid "Confirmar"
-msgstr ""
+msgid "Confirm"
+msgstr "Confirmar"
 
 msgctxt "#32053"
-msgid "Fechar"
-msgstr ""
+msgid "Close"
+msgstr "Fechar"
