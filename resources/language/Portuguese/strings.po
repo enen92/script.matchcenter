@@ -49,8 +49,8 @@ msgid "Use alternative name for teams"
 msgstr "Usar nome alternativo para as equipas"
 
 msgctxt "#32009"
-msgid "Enabled Leagues"
-msgstr "Ligas activas"
+msgid "Leagues have been enabled/disabled."
+msgstr "As ligas foram activadas/desactivadas."
 
 msgctxt "#32010"
 msgid "Twitter"
@@ -219,3 +219,11 @@ msgstr "Timeout em"
 msgctxt "#32051"
 msgid "seconds..."
 msgstr "segundos..."
+
+msgctxt "#32052"
+msgid "Confirmar"
+msgstr ""
+
+msgctxt "#32053"
+msgid "Fechar"
+msgstr ""

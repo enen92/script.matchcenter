@@ -49,7 +49,7 @@ msgid "Use alternative name for teams"
 msgstr ""
 
 msgctxt "#32009"
-msgid "Enabled Leagues"
+msgid "Leagues have been enabled/disabled."
 msgstr ""
 
 msgctxt "#32010"
@@ -220,4 +220,11 @@ msgctxt "#32051"
 msgid "seconds..."
 msgstr ""
 
+msgctxt "#32052"
+msgid "Confirm"
+msgstr ""
+
+msgctxt "#32053"
+msgid "Close"
+msgstr ""
 

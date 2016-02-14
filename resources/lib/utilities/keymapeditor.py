@@ -85,7 +85,12 @@ class KeyListener(WindowXMLDialog):
     TIMEOUT = 5
 
     def __new__(cls):
-        return super(KeyListener, cls).__new__(cls, "DialogKaiToast.xml", "")
+        #Krypton and above
+        if int(xbmc.getInfoLabel("System.BuildVersion")[0:2]) < 17:
+            return super(KeyListener, cls).__new__(cls, "DialogKaiToast.xml", "")
+        #Below Krypton
+        else:
+            return super(KeyListener, cls).__new__(cls, "DialogNotification.xml", "")
 
     def __init__(self):
         self.key = None

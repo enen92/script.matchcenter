@@ -20,6 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import xbmc
 import xbmcgui
 import thesportsdb
 from utilities import ssutils
@@ -36,7 +37,8 @@ class Select(xbmcgui.WindowXMLDialog):
 			self.already_ignored = []
 
 	def onInit(self):
-		self.getControl(1).setLabel(translate(32002))
+		self.getControl(1).setLabel(translate(32003))
+		self.getControl(3).setVisible(False)
 		leagues = api.Search().Leagues(sport="Soccer")
 		if leagues:
 			items = []
@@ -52,6 +54,10 @@ class Select(xbmcgui.WindowXMLDialog):
 				items.append(item)
 			self.getControl(6).addItems(items)
 			self.setFocusId(6)
+			#Krypton
+			if int(xbmc.getInfoLabel("System.BuildVersion")[0:2]) >= 17:
+				self.getControl(5).setLabel(translate(32052))
+				self.getControl(7).setLabel(translate(32053))
 
 	def onAction(self,action):
 		if action.getId() == 10 or action.getId() == 92:
@@ -83,6 +89,9 @@ class Select(xbmcgui.WindowXMLDialog):
 			
 			self.close()
 			xbmcgui.Dialog().ok(translate(32000),translate(32009))
+
+		elif controlId == 7:
+			self.close()
 
 def start():
 	ignoreWindow = Select(
