@@ -183,16 +183,28 @@
 						</control>
 						<control type="image">
 							<description>Team Badge</description>
-							<left>15</left>
+							<left>55</left>
 							<top>3</top>
 							<width>50</width>
 							<height>50</height>
 							<texture>$INFO[ListItem.Property(teambadge)]</texture>
 							<include>VisibleFadeEffect</include>
 						</control>
+						<control type="textbox">
+							<description>Team Position</description>
+							<posx>3</posx>
+							<posy>10</posy>
+							<width>50</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(position)]</label>
+							<font>font16</font>
+							<align>center</align>
+							<textcolor>selected</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
 						<control type="label">
 							<description>Team Name</description>
-							<posx>80</posx>
+							<posx>120</posx>
 							<posy>15</posy>
 							<width>300</width>
 							<height>35</height>
@@ -318,9 +330,21 @@
 							<visible>Control.HasFocus(32501)</visible>
 							<include>VisibleFadeEffect</include>
 						</control>
+						<control type="textbox">
+							<description>Team Position</description>
+							<posx>3</posx>
+							<posy>10</posy>
+							<width>50</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(position)]</label>
+							<font>font16</font>
+							<align>center</align>
+							<textcolor>selected</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
 						<control type="image">
 							<description>Team Badge</description>
-							<left>15</left>
+							<left>55</left>
 							<top>3</top>
 							<width>50</width>
 							<height>50</height>
@@ -329,7 +353,7 @@
 						</control>
 						<control type="label">
 							<description>Team Name</description>
-							<posx>80</posx>
+							<posx>120</posx>
 							<posy>15</posy>
 							<width>300</width>
 							<height>35</height>

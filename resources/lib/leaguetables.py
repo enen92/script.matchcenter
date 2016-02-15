@@ -50,11 +50,13 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		table = api.Lookups().Table(leagueid=self.leagueid,objects=True)
 		if table:
 			self.table = []
+			position = 1
 			for tableentry in table:
 				if show_alternative == "false":
 					item = xbmcgui.ListItem(tableentry.name)
 				else:
 					item = xbmcgui.ListItem(tableentry.Team.AlternativeNameFirst)
+				item.setProperty('position','[B]'+str(position)+ ' - [/B]' )
 				item.setProperty('teambadge',tableentry.Team.strTeamBadge)
 				item.setProperty('teamid',tableentry.Team.idTeam)
 				item.setProperty('totalgames',str(tableentry.played))
@@ -65,6 +67,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				item.setProperty('goalsconceeded',str(tableentry.goalsagainst))
 				item.setProperty('goaldifference',str(tableentry.goalsdifference))
 				item.setProperty('points',str(tableentry.total))
+				position += 1
 
 				self.table.append(item)
 
