@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<window type="window">
+	<include>dialogeffect</include>
+	<depth>DepthDialog+</depth>
+	<defaultcontrol always="true">32501</defaultcontrol>
+	<controls>
+		<control type="group">
+			<control type="image">
+				<description>background image</description>
+				<left>50</left>
+				<top>10</top>
+				<width>1180</width>
+				<height>687</height>
+				<texture border="40">dialogs/default/bg.png</texture>
+			</control>
+			<control type="button" id="32502">
+				<description>Close Window button</description>
+				<left>1153</left>
+				<top>15</top>
+				<width>64</width>
+				<height>32</height>
+				<label>-</label>
+				<font>-</font>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus>DialogCloseButton-focus.png</texturefocus>
+				<texturenofocus>DialogCloseButton.png</texturenofocus>
+				<onleft>32501</onleft>
+				<onright>32501</onright>
+				<onup>32501</onup>
+				<ondown>32501</ondown>
+				<animation effect="slide" end="-120,0" time="0" condition="Window.Close">Conditional</animation>
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+			<control type="group">
+				<visible>IsEmpty(Window(home).Property(loading))</visible>
+				<control type="image">
+					<description>Main Panel</description>
+					<left>65</left>
+					<top>65</top>
+					<width>1150</width>
+					<height>47</height>
+					<texture border="5">button-nofocus.png</texture>
+				</control>
+				<control type="label" id="32500">
+					<description>header label</description>
+					<left>50</left>
+					<top>30</top>
+					<width>1180</width>
+					<height>30</height>
+					<font>font13_title</font>
+					<label></label>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>selected</textcolor>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Total Points</description>
+					<posx>1140</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32034]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Goal Difference</description>
+					<posx>1060</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32035]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Goals conceeded</description>
+					<posx>980</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32036]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Goals scored</description>
+					<posx>899</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32037]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Lost</description>
+					<posx>820</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32038]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Draw</description>
+					<posx>740</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32039]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Wins</description>
+					<posx>660</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32040]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+				<control type="label">
+					<description>Total</description>
+					<posx>580</posx>
+					<posy>70</posy>
+					<width>50</width>
+					<height>35</height>
+					<label>$ADDON[script.matchcenter 32041]</label>
+					<font>font16</font>
+					<align>left</align>
+					<textcolor>selected</textcolor>
+					<shadowcolor>AA000000</shadowcolor>
+				</control>
+			</control>
+			<control type="group">
+				<visible>IsEmpty(Window(home).Property(loading))</visible>
+				<control type="list" id="32501">
+					<left>-55</left>
+					<top>111</top>
+					<width>1137</width>
+					<height>570</height>
+					<onup>32502</onup>
+					<ondown>32501</ondown>
+					<onright>61</onright>
+					<pagecontrol>61</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<animation effect="slide" start="0,0" end="10,0" time="0" condition="!Control.IsVisible(61)">Conditional</animation>
+					<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
+					<itemlayout height="57" width="1137">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>1137</width>
+							<height>57</height>
+							<texture border="1">separator2.png</texture>
+						</control>
+						<control type="image">
+							<description>Team Badge</description>
+							<left>55</left>
+							<top>3</top>
+							<width>50</width>
+							<height>50</height>
+							<texture>$INFO[ListItem.Property(teambadge)]</texture>
+							<include>VisibleFadeEffect</include>
+						</control>
+						<control type="textbox">
+							<description>Team Position</description>
+							<posx>3</posx>
+							<posy>10</posy>
+							<width>50</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(position)]</label>
+							<font>font16</font>
+							<align>center</align>
+							<textcolor>selected</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Team Name</description>
+							<posx>120</posx>
+							<posy>15</posy>
+							<width>300</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font14</font>
+							<align>left</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Total Games</description>
+							<posx>503</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totalgames)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Wins</description>
+							<posx>584</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totalwins)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Draws</description>
+							<posx>664</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totaldraws)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Losts</description>
+							<posx>744</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totallosts)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals Scored</description>
+							<posx>827</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goalsscored)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals Conceeded</description>
+							<posx>909</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goalsconceeded)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals difference</description>
+							<posx>989</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goaldifference)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Points</description>
+							<posx>1076</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(points)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>grey2</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+					</itemlayout>
+					<focusedlayout height="57" width="1137">
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>1137</width>
+							<height>57</height>
+							<texture border="1">separator2.png</texture>
+							<visible>!Control.HasFocus(32501)</visible>
+							<include>VisibleFadeEffect</include>
+						</control>
+						<control type="image">
+							<left>0</left>
+							<top>0</top>
+							<width>1137</width>
+							<height>57</height>
+							<texture border="5">listselect_fo.png</texture>
+							<visible>Control.HasFocus(32501)</visible>
+							<include>VisibleFadeEffect</include>
+						</control>
+						<control type="textbox">
+							<description>Team Position</description>
+							<posx>3</posx>
+							<posy>10</posy>
+							<width>50</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(position)]</label>
+							<font>font16</font>
+							<align>center</align>
+							<textcolor>selected</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="image">
+							<description>Team Badge</description>
+							<left>55</left>
+							<top>3</top>
+							<width>50</width>
+							<height>50</height>
+							<texture>$INFO[ListItem.Property(teambadge)]</texture>
+							<include>VisibleFadeEffect</include>
+						</control>
+						<control type="label">
+							<description>Team Name</description>
+							<posx>120</posx>
+							<posy>15</posy>
+							<width>300</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font14</font>
+							<align>left</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Total Games</description>
+							<posx>503</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totalgames)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Wins</description>
+							<posx>584</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totalwins)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Draws</description>
+							<posx>664</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totaldraws)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Losts</description>
+							<posx>744</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(totallosts)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals Scored</description>
+							<posx>827</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goalsscored)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals Conceeded</description>
+							<posx>909</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goalsconceeded)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Goals difference</description>
+							<posx>989</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(goaldifference)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+						<control type="label">
+							<description>Points</description>
+							<posx>1076</posx>
+							<posy>15</posy>
+							<width>40</width>
+							<height>35</height>
+							<label>$INFO[ListItem.Property(points)]</label>
+							<font>font14</font>
+							<align>center</align>
+							<textcolor>white</textcolor>
+							<shadowcolor>AA000000</shadowcolor>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="scrollbar" id="61">
+					<left>1080</left>
+					<top>111</top>
+					<width>14</width>
+					<height>570</height>
+					<texturesliderbar colordiffuse="55ffffff" border="4">scrollbar/texturesliderbar3.png</texturesliderbar>
+					<texturesliderbarfocus border="4">scrollbar/texturesliderbar3.png</texturesliderbarfocus>
+					<onleft>32501</onleft>
+					<onright>32501</onright>
+					<ondown>61</ondown>
+					<onup>61</onup>
+					<showonepage>true</showonepage>
+					<orientation>vertical</orientation>
+					<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
+				</control>
+			</control>
+		</control>
+		<!--Busy control-->
+		<control type="image" id="32540">
+			<description>Busy animation</description>
+			<posx>450</posx>
+			<posy>270</posy>
+			<width>150</width>
+			<height>150</height>
+			<texture></texture>
+			<aspectratio>keep</aspectratio>
+			<animation effect="rotate" start="0" end="360" center="525,345" time="1200" loop="true" condition="true">conditional</animation>
+			<visible>!IsEmpty(Window(home).Property(loading))</visible>
+		</control>
+		<control type="label">
+			<top>300</top>
+			<left>400</left>
+			<width>650</width>
+			<height>90</height>
+			<font>font35_title</font>
+			<textcolor>FFF0F0F0</textcolor>
+			<aligny>center</aligny>
+			<align>center</align>
+			<label>$ADDON[script.matchcenter 32016]</label>
+			<visible>!IsEmpty(Window(home).Property(loading))</visible>
+		</control>
+	</controls>
+</window>

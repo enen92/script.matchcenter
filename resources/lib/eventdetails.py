@@ -433,6 +433,6 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				self.setLineUps("home")
 
 def showDetails(match):
-	main = detailsDialog('script-matchcenter-EventDetails.xml', addon_path,'default','', item=match )
+	main = detailsDialog('script-matchcenter-EventDetails.xml', addon_path,getskinfolder(),'', item=match )
 	main.doModal()
 	del main

@@ -65,7 +65,7 @@ def start():
 	main = Main(
 			'script-matchcenter-LeagueSelection.xml',
 			addon_path,
-			'default',
+			getskinfolder(),
 			'',
 			)
 	main.doModal()

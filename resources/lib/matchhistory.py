@@ -118,6 +118,6 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			eventdetails.showDetails(self.eventObjs[eventid])
 
 def start(teamid=None):
-	main = detailsDialog('script-matchcenter-MatchHistory.xml', addon_path, 'default', '', teamid=teamid)		
+	main = detailsDialog('script-matchcenter-MatchHistory.xml', addon_path, getskinfolder(), '', teamid=teamid)		
 	main.doModal()
 	del main

@@ -134,12 +134,12 @@ class Main(xbmcgui.WindowXMLDialog):
 								awayteamName = livegame.AwayTeam
 
 							#Choose between textbox (long names) or label (short names)
-							if len(hometeamName) > 14 and " " in hometeamName:
+							if len(hometeamName) >= 14 and " " in hometeamName:
 								item.setProperty('hometeam_long',hometeamName)
 							else:
 								item.setProperty('hometeam_short',hometeamName)
 
-							if len(awayteamName) > 14 and " " in awayteamName:
+							if len(awayteamName) >= 14 and " " in awayteamName:
 								item.setProperty('awayteam_long',awayteamName)
 							else:
 								item.setProperty('awayteam_short',awayteamName)
@@ -167,7 +167,7 @@ class Main(xbmcgui.WindowXMLDialog):
 								away_redcards = livegame.AwayTeamRedCardDetails.split(";")
 								for redcard in away_redcards:
 									if not redcard: away_redcards.remove(redcard)
-								if len(away_redcards) == 1: item.setProperty('away_redcard1',os.path.join(addon_path,"resources","img","redcard.png"))
+								if len(away_redcards) == 1: item.setProperty('away_redcard2',os.path.join(addon_path,"resources","img","redcard.png"))
 								elif len(away_redcards) > 1:
 									item.setProperty('away_redcard1',os.path.join(addon_path,"resources","img","redcard.png"))
 									item.setProperty('away_redcard2',os.path.join(addon_path,"resources","img","redcard.png"))
@@ -234,7 +234,7 @@ def start():
 	main = Main(
 			'script-matchcenter-Livescores.xml',
 			addon_path,
-			'default',
+			getskinfolder(),
 			'',
 			)
 	main.doModal()

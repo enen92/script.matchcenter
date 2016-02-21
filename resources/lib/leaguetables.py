@@ -84,6 +84,6 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 
 
 def start_table(leagueid=None):
-	main = detailsDialog('script-matchcenter-LeagueTables.xml', addon_path, 'default', '', leagueid=leagueid)
+	main = detailsDialog('script-matchcenter-LeagueTables.xml', addon_path, getskinfolder(), '', leagueid=leagueid)
 	main.doModal()
 	del main

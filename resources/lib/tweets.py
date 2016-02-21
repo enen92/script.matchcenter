@@ -104,7 +104,7 @@ def start(twitterhash=None):
 			twitter_mediafile = twitter_data["file"]
 			if twitter_mediafile == xbmc.getInfoLabel('Player.Filenameandpath'):
 				userInput = False
-				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, 'default', '', hash=twitterhash)
+				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash)
 				main.doModal()
 				del main
 			else:
@@ -116,7 +116,7 @@ def start(twitterhash=None):
 			dialog = xbmcgui.Dialog()
 			twitterhash = dialog.input(translate(32046), type=xbmcgui.INPUT_ALPHANUM)
 			if len(twitterhash) != 0:
-				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, 'default', '', hash=twitterhash.replace("#",""))
+				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash.replace("#",""))
 				if xbmc.getCondVisibility("Player.HasMedia") and save_hashes_during_playback == 'true':
 					main.savecurrenthash()
 				main.doModal()
@@ -125,6 +125,6 @@ def start(twitterhash=None):
 				xbmcgui.Dialog().ok(translate(32000), translate(32047))
 				mainmenu.start()
 	else:
-		main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, 'default', '', hash=twitterhash)
+		main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash)
 		main.doModal()
 		del main	
