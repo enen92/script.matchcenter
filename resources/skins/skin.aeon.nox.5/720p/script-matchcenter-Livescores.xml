@@ -95,7 +95,7 @@
 							<posx>350</posx>
 							<posy>10</posy>
 							<width>450</width>
-							<height>40</height>
+							<height>20</height>
 							<label>$INFO[ListItem.Property(league_and_round)]</label>
 							<font>font13_title</font>
 							<align>center</align>
@@ -265,10 +265,10 @@
 						</control>
 						<control type="image">
 							<left>0</left>
-							<top>0</top>
+							<top>-5</top>
 							<width>945</width>
 							<height>160</height>
-							<texture border="5">listselect_fo.png</texture>
+							<texture border="1">listselect_fo.png</texture>
 							<visible>Control.HasFocus(32500)</visible>
 							<include>VisibleFadeEffect</include>
 						</control>
@@ -333,7 +333,7 @@
 							<posx>350</posx>
 							<posy>10</posy>
 							<width>450</width>
-							<height>40</height>
+							<height>20</height>
 							<label>$INFO[ListItem.Property(league_and_round)]</label>
 							<font>font13_title</font>
 							<align>center</align>
