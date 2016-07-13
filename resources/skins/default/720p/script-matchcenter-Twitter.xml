@@ -199,13 +199,17 @@
 				<top>85</top>
 				<width>15</width>
 				<height>540</height>
-				<texturesliderbackground colordiffuse="22FFFFFF">white.png</texturesliderbackground>
+				<texturesliderbackground colordiffuse="29FFFFFF">white.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="AAFFFFFF">white.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="FF12B2E7">white.png</texturesliderbarfocus>
+				<textureslidernib>-</textureslidernib>
+				<textureslidernibfocus>-</textureslidernibfocus>
+				<showonepage>false</showonepage>
+				<orientation>vertical</orientation>
 				<onleft>32501</onleft>
 				<onright>32501</onright>
 				<ondown>61</ondown>
 				<onup>61</onup>
-				<showonepage>true</showonepage>
-				<orientation>vertical</orientation>
 				<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
 			</control>
 		</control>
