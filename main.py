@@ -33,21 +33,14 @@ from resources.lib.utilities import keymapeditor
 from resources.lib.utilities.common_addon import *
  
 def get_params():
-    param=[]
-    try: paramstring=sys.argv[1]
-    except: paramstring = ''
-    if len(paramstring)>=2:
+    pairsofparams = []
+    if len(sys.argv) >= 2:
         params=sys.argv[1]
-        if (params[len(params)-1]=='/'):
-            params=params[0:len(params)-2]
         pairsofparams=params.split('/')
-        for parm in pairsofparams:
-            if parm == '':
-                pairsofparams.remove(parm)      
+        pairsofparams = [parm for parm in pairsofparams if parm]
     return pairsofparams
 
-try: params=get_params()
-except: params = []
+params=get_params()
 
 if not params:
     mainmenu.start()
