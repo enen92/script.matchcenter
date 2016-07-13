@@ -20,14 +20,14 @@
 				<top>0</top>
 				<width>1158</width>
 				<height>683</height>
-				<texture border="2">dialogs/dialog-bg-solid.png</texture>
+				<texture border="2">dialog-bg-solid.png</texture>
 			</control>
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
 				<width>1158</width>
 				<height>70</height>
-				<texture colordiffuse="button_focus" border="2">colors/white70.png</texture>
+				<texture colordiffuse="FF12B2E7" border="2">white70.png</texture>
 			</control>
 			<control type="label" id="32500">
 				<textoffsetx>70</textoffsetx>
@@ -73,24 +73,15 @@
 				<onup>32503</onup>
 				<ondown>32503</ondown>
 				<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
-				<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
-				<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
-				<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
-				<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
+				<textureradioofffocus colordiffuse="EEFFFFFF">close.png</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="EEFFFFFF">logo.png</textureradiooffnofocus>
+				<textureradioonfocus colordiffuse="EEFFFFFF">close.png</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="EEFFFFFF">logo.png</textureradioonnofocus>
 				<onclick>Action(close)</onclick>
 			</control>
 		</control>
-
 		<control type="group">
 			<visible>!IsEmpty(Window(home).Property(has_history))+IsEmpty(Window(home).Property(loading))</visible>
-			<control type="image">
-				<description>Main Panel</description>
-				<left>65</left>
-				<top>65</top>
-				<width>1150</width>
-				<height>47</height>
-				<texture border="5">button-nofocus.png</texture>
-			</control>
 			<control type="label">
 				<description>Next Matches</description>
 				<posx>75</posx>
@@ -131,7 +122,7 @@
 						<top>-20</top>
 						<width>1177</width>
 						<height>150</height>
-						<texture border="40">buttons/button-nofo.png</texture>
+						<texture border="40">button-nofo.png</texture>
 					</control>
 					<control type="image">
 						<description>Home Team Badge</description>
@@ -218,14 +209,14 @@
 						<top>-20</top>
 						<width>1177</width>
 						<height>150</height>
-						<texture border="40">buttons/button-nofo.png</texture>
+						<texture border="40">button-nofo.png</texture>
 					</control>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>616</width>
 						<height>150</height>
-						<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+						<texture border="40" colordiffuse="FF12B2E7">button-fo.png</texture>
 						<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 					</control>
 					<control type="image">
@@ -324,7 +315,7 @@
 						<top>-20</top>
 						<width>1177</width>
 						<height>150</height>
-						<texture border="40">buttons/button-nofo.png</texture>
+						<texture border="40">button-nofo.png</texture>
 					</control>
 					<control type="image">
 						<description>Home Team Badge</description>
@@ -411,14 +402,14 @@
 						<top>-20</top>
 						<width>1177</width>
 						<height>150</height>
-						<texture border="40">buttons/button-nofo.png</texture>
+						<texture border="40">button-nofo.png</texture>
 					</control>
 					<control type="image">
 						<left>-20</left>
 						<top>-20</top>
 						<width>616</width>
 						<height>150</height>
-						<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+						<texture border="40" colordiffuse="FF12B2E7">button-fo.png</texture>
 						<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 					</control>
 					<control type="image">

@@ -16,7 +16,7 @@
 			<top>24</top>
 			<width>966</width>
 			<height>663</height>
-			<texture border="2">dialogs/dialog-bg-solid.png</texture>
+			<texture border="2">dialog-bg-solid.png</texture>
 		</control>
 		<control type="group">
 			<control type="group">
@@ -38,7 +38,7 @@
 							<left>-20</left>
 							<width>990</width>
 							<height>203</height>
-							<texture border="40">buttons/button-nofo.png</texture>
+							<texture border="40">button-nofo.png</texture>
 						</control>
 						<control type="image">
 							<left>200</left>
@@ -86,8 +86,8 @@
 							<width>150</width>
 							<height>16</height>
 							<info>ListItem.Property(matchpercent)</info>
-							<texturebg border="3">progress/texturebg_border_white.png</texturebg>
-							<midtexture colordiffuse="button_focus" border="3">progress/texturebg_white.png</midtexture>
+							<texturebg border="3">texturebg_border_white.png</texturebg>
+							<midtexture colordiffuse="FF12B2E7" border="3">texturebg_white.png</midtexture>
 							<lefttexture>-</lefttexture>
 							<righttexture>-</righttexture>
 							<overlaytexture>-</overlaytexture>
@@ -268,7 +268,7 @@
 							<left>-20</left>
 							<width>990</width>
 							<height>205</height>
-							<texture border="40">buttons/button-nofo.png</texture>
+							<texture border="40">button-nofo.png</texture>
 							<animation effect="fade" start="0" end="100" time="0">Unfocus</animation>
 							<animation effect="fade" start="100" end="0" time="0">Focus</animation>
 						</control>
@@ -277,7 +277,7 @@
 							<left>-20</left>
 							<width>990</width>
 							<height>205</height>
-							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<texture border="40" colordiffuse="FF12B2E7">button-fo.png</texture>
 							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 						</control>
 						<control type="image">
@@ -326,8 +326,8 @@
 							<width>150</width>
 							<height>16</height>
 							<info>ListItem.Property(matchpercent)</info>
-							<texturebg border="3">progress/texturebg_border_white.png</texturebg>
-							<midtexture colordiffuse="button_focus" border="3">progress/texturebg_white.png</midtexture>
+							<texturebg border="3">texturebg_border_white.png</texturebg>
+							<midtexture colordiffuse="FF12B2E7" border="3">texturebg_white.png</midtexture>
 							<lefttexture>-</lefttexture>
 							<righttexture>-</righttexture>
 							<overlaytexture>-</overlaytexture>
@@ -508,7 +508,7 @@
 					<top>26</top>
 					<width>15</width>
 					<height>660</height>
-					<texturesliderbackground colordiffuse="22FFFFFF">colors/white.png</texturesliderbackground>
+					<texturesliderbackground colordiffuse="22FFFFFF">white.png</texturesliderbackground>
 					<onleft>32500</onleft>
 					<onright>32500</onright>
 					<ondown>32500</ondown>

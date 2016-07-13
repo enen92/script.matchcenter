@@ -19,14 +19,14 @@
 				<top>0</top>
 				<width>979</width>
 				<height>698</height>
-				<texture border="2">dialogs/dialog-bg-solid.png</texture>
+				<texture border="2">dialog-bg-solid.png</texture>
 			</control>
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
 				<width>979</width>
 				<height>70</height>
-				<texture colordiffuse="button_focus" border="2">colors/white70.png</texture>
+				<texture colordiffuse="FF12B2E7" border="2">white70.png</texture>
 			</control>
 			<control type="label">
 				<textoffsetx>70</textoffsetx>
@@ -70,20 +70,15 @@
 				<texturenofocus>-</texturenofocus>
 				<label></label>
 				<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
-				<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
-				<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
-				<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
-				<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
+				<textureradioofffocus colordiffuse="EEFFFFFF">close.png</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="EEFFFFFF">logo.png</textureradiooffnofocus>
+				<textureradioonfocus colordiffuse="EEFFFFFF">close.png</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="EEFFFFFF">logo.png</textureradioonnofocus>
 				<onclick>Action(close)</onclick>
 			</control>
 		</control>
-
-
-
-
 		<control type="group">
 			<control type="group">
-
 				<control type="panel" id="32500">
 					<left>135</left>
 					<top>65</top>
@@ -102,7 +97,7 @@
 							<left>-3</left>
 							<width>347</width>
 							<height>235</height>
-							<texture border="40">buttons/button-nofo.png</texture>
+							<texture border="40">button-nofo.png</texture>
 						</control>
 						<control type="image">
 							<left>95</left>
@@ -127,14 +122,14 @@
 							<control type="image">
 								<width>340</width>
 								<height>245</height>
-								<texture border="40">buttons/button-nofo.png</texture>
+								<texture border="40">button-nofo.png</texture>
 								<animation effect="fade" start="0" end="100" time="0">Unfocus</animation>
 								<animation effect="fade" start="100" end="0" time="0">Focus</animation>
 							</control>
 							<control type="image">
 								<width>340</width>
 								<height>237</height>
-								<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+								<texture border="40" colordiffuse="FF12B2E7">button-fo.png</texture>
 								<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 							</control>
 							<control type="image">
@@ -154,7 +149,7 @@
 					<top>80</top>
 					<width>15</width>
 					<height>629</height>
-					<texturesliderbackground colordiffuse="22FFFFFF">colors/white.png</texturesliderbackground>
+					<texturesliderbackground colordiffuse="22FFFFFF">white.png</texturesliderbackground>
 					<onleft>32500</onleft>
 					<onright>32500</onright>
 					<ondown>32500</ondown>
