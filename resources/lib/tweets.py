@@ -25,6 +25,7 @@ import xbmc
 import datetime
 import json
 import mainmenu
+import os
 from resources.lib.utilities import tweet
 from resources.lib.utilities import ssutils
 from resources.lib.utilities.common_addon import *
@@ -73,6 +74,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 	def savecurrenthash(self):
 		media_file = xbmc.getInfoLabel('Player.Filenameandpath')
 		media_dict = {"file" : media_file, "hash":self.hash}
+		if not os.path.exists(tweet_file):
+			if not os.path.exists(addon_userdata):
+				os.mkdir(addon_userdata)
 		ssutils.write_file(tweet_file,json.dumps(media_dict))
 		return
 
