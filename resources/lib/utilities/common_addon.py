@@ -43,8 +43,9 @@ json_formations = os.path.join(addon_path,"resources","formations.dict")
 tweet_file = os.path.join(addon_userdata,"twitter.txt")
 
 def getskinfolder():
-    if "skin.aeon.nox" in xbmc.getSkinDir(): return "skin.aeon.nox.5"
-    else: return "default"
+    #if "skin.aeon.nox" in xbmc.getSkinDir(): return "skin.aeon.nox.5"
+    #else: 
+    return "default"
 
 def removeNonAscii(s):
 	return "".join(filter(lambda x: ord(x)<128, s))

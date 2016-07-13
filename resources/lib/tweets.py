@@ -58,11 +58,13 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		tweets = tweet.get_hashtag_tweets(self.hash)
 		if tweets:
 			for _tweet in tweets:
+				td = ssutils.get_timedelta_string(datetime.datetime.utcnow() - _tweet["date"])
 				item = xbmcgui.ListItem(_tweet["text"].replace("\n",""))
 				item.setProperty("profilepic",_tweet["profilepic"])
 				item.setProperty("author","[B]" +"@" + _tweet["author"] + "[/B]")
+				item.setProperty("timedelta", td)
 				tweetitems.append(item)
-				#print datetime.datetime.now() - _tweet["date"]
+
 		self.getControl(32501).reset()
 		self.getControl(32501).addItems(tweetitems)
 		if tweetitems:

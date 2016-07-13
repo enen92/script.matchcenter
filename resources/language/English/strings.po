@@ -61,7 +61,7 @@ msgid "Twitter update time (min)"
 msgstr ""
 
 msgctxt "#32012"
-msgid "Save twitter hashes when playing media"
+msgid "Save twitter hashtags when playing media"
 msgstr ""
 
 msgctxt "#32013"
@@ -193,15 +193,15 @@ msgid "Latest Matches:"
 msgstr ""
 
 msgctxt "#32045"
-msgid "Twitter hash has been reset."
+msgid "Twitter hashtag has been reset."
 msgstr ""
 
 msgctxt "#32046"
-msgid "Enter twitter hash:"
+msgid "Enter twitter hashtag:"
 msgstr ""
 
 msgctxt "#32047"
-msgid "Twitter hash cannot be null."
+msgid "Twitter hashtag cannot be null."
 msgstr ""
 
 msgctxt "#32048"
@@ -228,3 +228,42 @@ msgctxt "#32053"
 msgid "Close"
 msgstr ""
 
+msgctxt "#32054"
+msgid "ago"
+msgstr ""
+
+msgctxt "#32055"
+msgid "and"
+msgstr ""
+
+msgctxt "#32056"
+msgid "day"
+msgstr ""
+
+msgctxt "#32057"
+msgid "days"
+msgstr ""
+
+msgctxt "#32058"
+msgid "hour"
+msgstr ""
+
+msgctxt "#32059"
+msgid "hours"
+msgstr ""
+
+msgctxt "#32060"
+msgid "minute"
+msgstr ""
+
+msgctxt "#32061"
+msgid "minutes"
+msgstr ""
+
+msgctxt "#32062"
+msgid "second"
+msgstr ""
+
+msgctxt "#32063"
+msgid "seconds"
+msgstr ""
