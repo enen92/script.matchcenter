@@ -21,7 +21,6 @@
 '''
 import datetime
 import time
-from common_addon import *
 from twitter import *
 
 con_secret='h7hSFO1BNKzyB2EabYf7RXXd5'
