@@ -28,7 +28,6 @@ from resources.lib.utilities.common_addon import *
 
 api = thesportsdb.Api("7723457519235")
 
-
 class detailsDialog(xbmcgui.WindowXMLDialog):
 		
 	def __init__( self, *args, **kwargs ):
@@ -37,9 +36,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 
 	def onInit(self):
 		self.getControl(32540).setImage(os.path.join(addon_path,"resources","img","goal.png"))
-		xbmc.executebuiltin("SetProperty(loading,1,home)")
+		xbmc.executebuiltin("SetProperty(loadingtables,1,home)")
 		self.setTable()
-		xbmc.executebuiltin("ClearProperty(loading,Home)")
+		xbmc.executebuiltin("ClearProperty(loadingtables,Home)")
 
 	def setTable(self):
 
@@ -52,28 +51,28 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			self.table = []
 			position = 1
 			for tableentry in table:
-				if show_alternative == "false":
-					item = xbmcgui.ListItem(tableentry.name)
-				else:
-					item = xbmcgui.ListItem(tableentry.Team.AlternativeNameFirst)
-				item.setProperty('position','[B]'+str(position)+ ' - [/B]' )
-				item.setProperty('teambadge',tableentry.Team.strTeamBadge)
-				item.setProperty('teamid',tableentry.Team.idTeam)
-				item.setProperty('totalgames',str(tableentry.played))
-				item.setProperty('totalwins',str(tableentry.win))
-				item.setProperty('totaldraws',str(tableentry.draw))
-				item.setProperty('totallosts',str(tableentry.loss))
-				item.setProperty('goalsscored',str(tableentry.goalsfor))
-				item.setProperty('goalsconceeded',str(tableentry.goalsagainst))
-				item.setProperty('goaldifference',str(tableentry.goalsdifference))
-				item.setProperty('points',str(tableentry.total))
-				position += 1
-
-				self.table.append(item)
+				try:
+					if show_alternative == "false":
+						item = xbmcgui.ListItem(tableentry.name)
+					else:
+						item = xbmcgui.ListItem(tableentry.Team.AlternativeNameFirst)
+					item.setProperty('position','[B]'+str(position)+ ' - [/B]' )
+					item.setProperty('teambadge',tableentry.Team.strTeamBadge)
+					item.setProperty('teamid',tableentry.Team.idTeam)
+					item.setProperty('totalgames',str(tableentry.played))
+					item.setProperty('totalwins',str(tableentry.win))
+					item.setProperty('totaldraws',str(tableentry.draw))
+					item.setProperty('totallosts',str(tableentry.loss))
+					item.setProperty('goalsscored',str(tableentry.goalsfor))
+					item.setProperty('goalsconceeded',str(tableentry.goalsagainst))
+					item.setProperty('goaldifference',str(tableentry.goalsdifference))
+					item.setProperty('points',str(tableentry.total))
+					position += 1
+					self.table.append(item)
+				except: pass
 
 			self.getControl(32501).addItems(self.table)
 			self.setFocusId(32501)
-
 		return
 
 

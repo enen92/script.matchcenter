@@ -1,46 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <window type="window">
-	<include>dialogeffect</include>
-	<depth>DepthDialog+</depth>
+	<depth>0.52</depth>
+	<defaultcontrol always="true">32500</defaultcontrol>
+	<animation type="WindowOpen" reversible="false">
+		<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
+		<effect type="fade" delay="160" end="100" time="240" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+		<effect type="fade" start="100" end="0" time="240" />
+	</animation>
 	<defaultcontrol always="true">32501</defaultcontrol>
 	<controls>
 		<control type="group">
-			<control type="image">
-				<description>background image</description>
-				<left>50</left>
-				<top>10</top>
-				<width>1180</width>
-				<height>687</height>
-				<texture border="40">DialogBack.png</texture>
-			</control>
-			<control type="image">
-				<description>Dialog Header image</description>
-				<left>50</left>
-				<top>26</top>
-				<width>1180</width>
-				<height>40</height>
-				<texture>dialogheader.png</texture>
-			</control>
-			<control type="button" id="32502">
-				<description>Close Window button</description>
-				<left>1153</left>
-				<top>15</top>
-				<width>64</width>
-				<height>32</height>
-				<label>-</label>
-				<font>-</font>
-				<onclick>PreviousMenu</onclick>
-				<texturefocus>DialogCloseButton-focus.png</texturefocus>
-				<texturenofocus>DialogCloseButton.png</texturenofocus>
-				<onleft>32501</onleft>
-				<onright>32501</onright>
-				<onup>32501</onup>
-				<ondown>32501</ondown>
-				<animation effect="slide" end="-120,0" time="0" condition="Window.Close">Conditional</animation>
-				<visible>system.getbool(input.enablemouse)</visible>
-			</control>
 			<control type="group">
-				<visible>IsEmpty(Window(home).Property(loading))</visible>
+				<left>60</left>
+				<top>10</top>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>1158</width>
+					<height>687</height>
+					<texture border="2">dialogs/dialog-bg-solid.png</texture>
+				</control>
+				<control type="image">
+					<left>0</left>
+					<top>0</top>
+					<width>1158</width>
+					<height>70</height>
+					<texture colordiffuse="button_focus" border="2">colors/white70.png</texture>
+				</control>
+				<control type="label" id="32500">
+					<textoffsetx>70</textoffsetx>
+					<left>-30</left>
+					<top>0</top>
+					<width>969</width>
+					<height>70</height>
+					<font>font20_title</font>
+					<label></label>
+					<align>left</align>
+					<aligny>center</aligny>
+					<shadowcolor>black</shadowcolor>
+				</control>
+				<control type="button">
+					<left>-1920</left>
+					<top>-1080</top>
+					<width>5760</width>
+					<height>3240</height>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>Action(close)</onclick>
+				</control>
+				<control type="button">
+					<description>button overlay to avoid closing in dialog area</description>
+					<left>0</left>
+					<top>0</top>
+					<width>969</width>
+					<height>283</height>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<onclick>noop</onclick>
+				</control>
+				<control type="radiobutton" id="32502">
+					<left>1139</left>
+					<top>11</top>
+					<width>48</width>
+					<height>48</height>
+					<radiowidth>48</radiowidth>
+					<radioheight>48</radioheight>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label></label>
+					<onup>32501</onup>
+					<ondown>32501</ondown>
+					<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
+					<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
+					<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
+					<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
+					<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
+					<onclick>Action(close)</onclick>
+				</control>
+			</control>
+
+
+			<control type="group">
+				<visible>IsEmpty(Window(home).Property(loadingtables))</visible>
+				<top>10</top>
 				<control type="image">
 					<description>Main Panel</description>
 					<left>65</left>
@@ -49,23 +94,10 @@
 					<height>47</height>
 					<texture border="5">button-nofocus.png</texture>
 				</control>
-				<control type="label" id="32500">
-					<description>header label</description>
-					<left>50</left>
-					<top>30</top>
-					<width>1180</width>
-					<height>30</height>
-					<font>font13_title</font>
-					<label></label>
-					<align>center</align>
-					<aligny>center</aligny>
-					<textcolor>selected</textcolor>
-					<shadowcolor>black</shadowcolor>
-				</control>
 				<control type="label">
 					<description>Total Points</description>
 					<posx>1140</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32034]</label>
@@ -77,7 +109,7 @@
 				<control type="label">
 					<description>Goal Difference</description>
 					<posx>1060</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32035]</label>
@@ -89,7 +121,7 @@
 				<control type="label">
 					<description>Goals conceeded</description>
 					<posx>980</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32036]</label>
@@ -101,7 +133,7 @@
 				<control type="label">
 					<description>Goals scored</description>
 					<posx>899</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32037]</label>
@@ -113,7 +145,7 @@
 				<control type="label">
 					<description>Lost</description>
 					<posx>820</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32038]</label>
@@ -125,7 +157,7 @@
 				<control type="label">
 					<description>Draw</description>
 					<posx>740</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32039]</label>
@@ -137,7 +169,7 @@
 				<control type="label">
 					<description>Wins</description>
 					<posx>660</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32040]</label>
@@ -149,7 +181,7 @@
 				<control type="label">
 					<description>Total</description>
 					<posx>580</posx>
-					<posy>70</posy>
+					<posy>75</posy>
 					<width>50</width>
 					<height>35</height>
 					<label>$ADDON[script.matchcenter 32041]</label>
@@ -160,10 +192,10 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>IsEmpty(Window(home).Property(loading))</visible>
+				<visible>IsEmpty(Window(home).Property(loadingtables))</visible>
 				<control type="list" id="32501">
 					<left>-55</left>
-					<top>111</top>
+					<top>126</top>
 					<width>1137</width>
 					<height>570</height>
 					<onup>32502</onup>
@@ -175,11 +207,11 @@
 					<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
 					<itemlayout height="57" width="1137">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>1137</width>
-							<height>57</height>
-							<texture border="5">button-nofocus.png</texture>
+							<left>-25</left>
+							<top>-20</top>
+							<width>1177</width>
+							<height>95</height>
+							<texture border="40">buttons/button-nofo.png</texture>
 						</control>
 						<control type="image">
 							<description>Team Badge</description>
@@ -188,7 +220,6 @@
 							<width>50</width>
 							<height>50</height>
 							<texture>$INFO[ListItem.Property(teambadge)]</texture>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="textbox">
 							<description>Team Position</description>
@@ -211,7 +242,7 @@
 							<label>$INFO[ListItem.Label]</label>
 							<font>font14</font>
 							<align>left</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -223,7 +254,7 @@
 							<label>$INFO[ListItem.Property(totalgames)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -235,7 +266,7 @@
 							<label>$INFO[ListItem.Property(totalwins)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -247,7 +278,7 @@
 							<label>$INFO[ListItem.Property(totaldraws)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -259,7 +290,7 @@
 							<label>$INFO[ListItem.Property(totallosts)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -271,7 +302,7 @@
 							<label>$INFO[ListItem.Property(goalsscored)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -283,7 +314,7 @@
 							<label>$INFO[ListItem.Property(goalsconceeded)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -295,7 +326,7 @@
 							<label>$INFO[ListItem.Property(goaldifference)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 						<control type="label">
@@ -307,28 +338,25 @@
 							<label>$INFO[ListItem.Property(points)]</label>
 							<font>font14</font>
 							<align>center</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 					</itemlayout>
 					<focusedlayout height="57" width="1137">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>1137</width>
-							<height>57</height>
-							<texture border="5">button-nofocus.png</texture>
-							<visible>!Control.HasFocus(32501)</visible>
-							<include>VisibleFadeEffect</include>
+							<left>-25</left>
+							<top>-20</top>
+							<width>1177</width>
+							<height>95</height>
+							<texture border="40">buttons/button-nofo.png</texture>
 						</control>
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>1137</width>
-							<height>57</height>
-							<texture border="5">button-focus2.png</texture>
-							<visible>Control.HasFocus(32501)</visible>
-							<include>VisibleFadeEffect</include>
+							<left>-20</left>
+							<top>-20</top>
+							<width>1177</width>
+							<height>95</height>
+							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 						</control>
 						<control type="textbox">
 							<description>Team Position</description>
@@ -349,7 +377,6 @@
 							<width>50</width>
 							<height>50</height>
 							<texture>$INFO[ListItem.Property(teambadge)]</texture>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="label">
 							<description>Team Name</description>
@@ -462,15 +489,11 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="61">
-					<left>1075</left>
-					<top>106</top>
-					<width>25</width>
-					<height>583</height>
-					<texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
-					<texturesliderbar border="0,14,0,14">ScrollBarV_bar.png</texturesliderbar>
-					<texturesliderbarfocus border="0,14,0,14">ScrollBarV_bar_focus.png</texturesliderbarfocus>
-					<textureslidernib>ScrollBarNib.png</textureslidernib>
-					<textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+					<left>1082</left>
+					<top>126</top>
+					<width>15</width>
+					<height>570</height>
+					<texturesliderbackground colordiffuse="22FFFFFF">colors/white.png</texturesliderbackground>
 					<onleft>32501</onleft>
 					<onright>32501</onright>
 					<ondown>61</ondown>
@@ -485,16 +508,16 @@
 		<control type="image" id="32540">
 			<description>Busy animation</description>
 			<posx>450</posx>
-			<posy>270</posy>
-			<width>150</width>
-			<height>150</height>
+			<posy>310</posy>
+			<width>120</width>
+			<height>120</height>
 			<texture></texture>
 			<aspectratio>keep</aspectratio>
-			<animation effect="rotate" start="0" end="360" center="525,345" time="1200" loop="true" condition="true">conditional</animation>
-			<visible>!IsEmpty(Window(home).Property(loading))</visible>
+			<animation effect="rotate" start="0" end="360" center="510,370" time="1200" loop="true" condition="true">conditional</animation>
+			<visible>!IsEmpty(Window(home).Property(loadingtables))</visible>
 		</control>
 		<control type="label">
-			<top>300</top>
+			<top>330</top>
 			<left>400</left>
 			<width>650</width>
 			<height>90</height>
@@ -503,7 +526,7 @@
 			<aligny>center</aligny>
 			<align>center</align>
 			<label>$ADDON[script.matchcenter 32016]</label>
-			<visible>!IsEmpty(Window(home).Property(loading))</visible>
+			<visible>!IsEmpty(Window(home).Property(loadingtables))</visible>
 		</control>
 	</controls>
 </window>

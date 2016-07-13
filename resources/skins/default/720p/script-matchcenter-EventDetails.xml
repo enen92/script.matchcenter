@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <window type="window">
-	<include>dialogeffect</include>
-	<depth>DepthDialog+</depth>
+	<depth>0.52</depth>
+	<defaultcontrol always="true">32500</defaultcontrol>
+	<animation type="WindowOpen" reversible="false">
+		<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
+		<effect type="fade" delay="160" end="100" time="240" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+		<effect type="fade" start="100" end="0" time="240" />
+	</animation>
 	<defaultcontrol always="true">32514</defaultcontrol>
-    <controls>
+	<controls>
 		<control type="group">
 			<control type="image">
 				<description>background image</description>
@@ -11,26 +19,30 @@
 				<top>10</top>
 				<width>1180</width>
 				<height>687</height>
-				<texture border="40">DialogBack.png</texture>
+				<texture border="2">dialogs/dialog-bg-solid.png</texture>
 			</control>
 			<control type="group">
 				<visible>!IsEmpty(Window(home).Property(has_details))</visible>
-				<control type="button" id="32529">
-					<description>Close Window button</description>
-					<left>1150</left>
+				<control type="radiobutton" id="32529">
+					<left>150</left>
 					<top>15</top>
-					<width>64</width>
-					<height>32</height>
-					<label>-</label>
-					<font>-</font>
-					<onclick>PreviousMenu</onclick>
-					<texturefocus>DialogCloseButton-focus.png</texturefocus>
-					<texturenofocus>DialogCloseButton.png</texturenofocus>
+					<width>48</width>
+					<height>48</height>
+					<radiowidth>48</radiowidth>
+					<radioheight>48</radioheight>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label></label>
+					<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
+					<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
+					<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
+					<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
+					<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
 					<onleft>32514</onleft>
 					<onright>32514</onright>
 					<onup>32514</onup>
 					<ondown>32514</ondown>
-					<visible>system.getbool(input.enablemouse)</visible>
+					<onclick>Action(close)</onclick>
 				</control>
 				<control type="label" id="32500">
 					<description>League and Round</description>
@@ -69,7 +81,7 @@
 					<label></label>
 					<font>font35_title</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<control type="image" id="32504">
@@ -97,7 +109,7 @@
 					<label></label>
 					<font>font35_title</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<control type="label" id="32507">
@@ -121,7 +133,7 @@
 					<label></label>
 					<font>font12</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<control type="image" id="32509">
@@ -134,12 +146,15 @@
 				<control type="progress" id="32510">
 					<description>Progressbar</description>
 					<left>565</left>
-					<top>155</top>
+					<top>165</top>
 					<width>150</width>
 					<height>16</height>
-					<colordiffuse>88FFFFFF</colordiffuse>
 					<info></info>
-					<texturebg border="2">osd/texturebg2.png</texturebg>
+					<texturebg border="3">progress/texturebg_border_white.png</texturebg>
+					<midtexture colordiffuse="button_focus" border="3">progress/texturebg_white.png</midtexture>
+					<lefttexture>-</lefttexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
 				</control>
 				<control type="label" id="32511">
 					<description>Stadium</description>
@@ -150,7 +165,7 @@
 					<label></label>
 					<font>font10</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<control type="label" id="32512">
@@ -162,7 +177,7 @@
 					<label></label>
 					<font>font10</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<control type="label" id="32513">
@@ -174,7 +189,7 @@
 					<label></label>
 					<font>font10</font>
 					<align>center</align>
-					<textcolor>grey2</textcolor>
+					<textcolor>grey</textcolor>
 					<shadowcolor>AA000000</shadowcolor>
 				</control>
 				<!-- Event panel -->
@@ -184,19 +199,24 @@
 					<top>280</top>
 					<width>1060</width>
 					<height>345</height>
-					<texture border="5">button-nofocus.png</texture>
+					<texture colordiffuse="border_alpha">colors/black.png</texture>
 				</control>
 				<control type="button" id="32514">
 					<description>Manual button</description>
-					<left>437</left>
-					<top>633</top>
-					<width>200</width>
-					<height>40</height>
+					<left>427</left>
+					<top>623</top>
+					<width>250</width>
+					<height>80</height>
 					<label>$ADDON[script.matchcenter 32032]</label>
-					<font>font12_title</font>
+					<texturefocus border="30" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+					<texturenofocus border="30">buttons/button-nofo.png</texturenofocus>
 					<textcolor>white</textcolor>
-					<focusedcolor>white</focusedcolor>
+					<disabledcolor>disabled</disabledcolor>
+					<textoffsetx>7</textoffsetx>
+					<pulseonselect>no</pulseonselect>
+					<font>font13</font>
 					<align>center</align>
+					<aligny>center</aligny>
 					<onleft>32515</onleft>
 					<onright>32515</onright>
 					<onup>32516</onup>
@@ -204,15 +224,20 @@
 				</control>
 				<control type="button" id="32515">
 					<description>Manual button</description>
-					<left>642</left>
-					<top>633</top>
-					<width>200</width>
-					<height>40</height>
+					<left>652</left>
+					<top>623</top>
+					<width>250</width>
+					<height>80</height>
 					<label>$ADDON[script.matchcenter 32033]</label>
-					<font>font12_title</font>
+					<texturefocus border="30" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+					<texturenofocus border="30">buttons/button-nofo.png</texturenofocus>
 					<textcolor>white</textcolor>
-					<focusedcolor>white</focusedcolor>
+					<disabledcolor>disabled</disabledcolor>
+					<textoffsetx>7</textoffsetx>
+					<pulseonselect>no</pulseonselect>
+					<font>font13</font>
 					<align>center</align>
+					<aligny>center</aligny>
 					<onleft>32514</onleft>
 					<onright>32514</onright>
 					<onup>32516</onup>
@@ -229,13 +254,6 @@
 					<scrolltime>200</scrolltime>
 					<itemlayout height="43" width="530">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-nofocus.png</texture>
-						</control>
-						<control type="image">
 							<left>5</left>
 							<top>2</top>
 							<width>40</width>
@@ -263,28 +281,19 @@
 							<label>$INFO[ListItem.Property(eventlabel)]</label>
 							<font>font13_title</font>
 							<align>left</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</itemlayout>
 					<focusedlayout height="43" width="530">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-nofocus.png</texture>
-							<include>VisibleFadeEffect</include>
-						</control>
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-focus2.png</texture>
+							<left>-20</left>
+							<top>-20</top>
+							<width>570</width>
+							<height>85</height>
+							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 							<visible>Control.HasFocus(32516)</visible>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="image">
 							<left>5</left>
@@ -316,7 +325,6 @@
 							<align>left</align>
 							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</focusedlayout>
 				</control>
@@ -332,13 +340,6 @@
 					<scrolltime>200</scrolltime>
 					<itemlayout height="43" width="530">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-nofocus.png</texture>
-						</control>
-						<control type="image">
 							<left>5</left>
 							<top>2</top>
 							<width>40</width>
@@ -366,27 +367,19 @@
 							<label>$INFO[ListItem.Property(eventlabel)]</label>
 							<font>font13_title</font>
 							<align>left</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
 						</control>
 					</itemlayout>
 					<focusedlayout height="43" width="530">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-nofocus.png</texture>
-							<include>VisibleFadeEffect</include>
-						</control>
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>530</width>
-							<height>43</height>
-							<texture border="5">button-focus2.png</texture>
+							<left>-20</left>
+							<top>-20</top>
+							<width>570</width>
+							<height>85</height>
+							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 							<visible>Control.HasFocus(32517)</visible>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="image">
 							<left>5</left>
@@ -418,7 +411,6 @@
 							<align>left</align>
 							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</focusedlayout>
 				</control>
@@ -426,22 +418,26 @@
 			<!-- Pitch -->
 			<control type="group">
 				<visible>!IsEmpty(Window(home).Property(has_lineups))</visible>
-				<control type="button" id="32530">
-					<description>Close Window button</description>
-					<left>70</left>
+				<control type="radiobutton" id="32530">
+					<left>150</left>
 					<top>15</top>
-					<width>64</width>
-					<height>32</height>
-					<label>-</label>
-					<font>-</font>
-					<onclick>PreviousMenu</onclick>
-					<texturefocus>DialogCloseButton-focus.png</texturefocus>
-					<texturenofocus>DialogCloseButton.png</texturenofocus>
+					<width>48</width>
+					<height>48</height>
+					<radiowidth>48</radiowidth>
+					<radioheight>48</radioheight>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label></label>
+					<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
+					<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
+					<textureradiooffnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradiooffnofocus>
+					<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
+					<textureradioonnofocus colordiffuse="EEFFFFFF">icons/logo.png</textureradioonnofocus>
 					<onleft>32527</onleft>
 					<onright>32527</onright>
 					<onup>32527</onup>
 					<ondown>32527</ondown>
-					<visible>system.getbool(input.enablemouse)</visible>
+					<onclick>Action(close)</onclick>
 				</control>
 				<control type="label" id="32518">
 					<description>Formation label</description>
@@ -491,7 +487,7 @@
 					<top>165</top>
 					<width>500</width>
 					<height>40</height>
-					<texture border="5">button-nofocus.png</texture>
+					<texture colordiffuse="border_alpha">colors/black.png</texture>
 				</control>
 				<control type="image">
 					<description>Main Panel</description>
@@ -499,7 +495,7 @@
 					<top>165</top>
 					<width>500</width>
 					<height>424</height>
-					<texture border="5">button-nofocus.png</texture>
+					<texture colordiffuse="border_alpha">colors/black.png</texture>
 				</control>
 				<control type="label" id="32522">
 					<description>Squad: Label</description>
@@ -549,28 +545,19 @@
 							<label>$INFO[ListItem.Label]</label>
 							<font>font13_title</font>
 							<align>left</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</itemlayout>
 					<focusedlayout height="35" width="250">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>250</width>
-							<height>35</height>
-							<texture border="5">button-nofocus.png</texture>
-							<include>VisibleFadeEffect</include>
-						</control>
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>250</width>
-							<height>35</height>
-							<texture border="5">button-focus2.png</texture>
+							<left>-20</left>
+							<top>-20</top>
+							<width>290</width>
+							<height>80</height>
+							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 							<visible>Control.HasFocus(32524)</visible>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="label">
 							<description>Description</description>
@@ -583,7 +570,6 @@
 							<align>left</align>
 							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</focusedlayout>
 				</control>
@@ -611,28 +597,19 @@
 							<label>$INFO[ListItem.Label]</label>
 							<font>font13_title</font>
 							<align>left</align>
-							<textcolor>grey2</textcolor>
+							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</itemlayout>
 					<focusedlayout height="35" width="250">
 						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>250</width>
-							<height>35</height>
-							<texture border="5">button-nofocus.png</texture>
-							<include>VisibleFadeEffect</include>
-						</control>
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<width>250</width>
-							<height>35</height>
-							<texture border="5">button-focus2.png</texture>
+							<left>-20</left>
+							<top>-20</top>
+							<width>290</width>
+							<height>80</height>
+							<texture border="40" colordiffuse="button_focus">buttons/button-fo.png</texture>
+							<animation effect="fade" start="100" end="0" time="0">Unfocus</animation>
 							<visible>Control.HasFocus(32525)</visible>
-							<include>VisibleFadeEffect</include>
 						</control>
 						<control type="label">
 							<description>Description</description>
@@ -645,7 +622,6 @@
 							<align>left</align>
 							<textcolor>grey</textcolor>
 							<shadowcolor>AA000000</shadowcolor>
-							<include>VisibleFadeEffect</include>
 						</control>
 					</focusedlayout>
 				</control>
@@ -665,14 +641,19 @@
 				<control type="button" id="32527">
 					<description>Manual button</description>
 					<left>737</left>
-					<top>633</top>
+					<top>620</top>
 					<width>200</width>
-					<height>40</height>
+					<height>80</height>
 					<label></label>
-					<font>font12_title</font>
+					<texturefocus border="30" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+					<texturenofocus border="30">buttons/button-nofo.png</texturenofocus>
 					<textcolor>white</textcolor>
-					<focusedcolor>white</focusedcolor>
+					<disabledcolor>disabled</disabledcolor>
+					<textoffsetx>7</textoffsetx>
+					<pulseonselect>no</pulseonselect>
+					<font>font13</font>
 					<align>center</align>
+					<aligny>center</aligny>
 					<onleft>32528</onleft>
 					<onright>32528</onright>
 					<onup>32530</onup>
@@ -681,14 +662,19 @@
 				<control type="button" id="32528">
 					<description>Match details</description>
 					<left>942</left>
-					<top>633</top>
+					<top>620</top>
 					<width>200</width>
-					<height>40</height>
+					<height>80</height>
+					<texturefocus border="30" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+					<texturenofocus border="30">buttons/button-nofo.png</texturenofocus>
+					<font>font13</font>
 					<label>$ADDON[script.matchcenter 32031]</label>
-					<font>font12_title</font>
-					<textcolor>white</textcolor>
-					<focusedcolor>white</focusedcolor>
 					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>white</textcolor>
+					<disabledcolor>disabled</disabledcolor>
+					<textoffsetx>7</textoffsetx>
+					<pulseonselect>no</pulseonselect>
 					<onleft>32527</onleft>
 					<onright>32527</onright>
 					<onup>32530</onup>
@@ -696,5 +682,5 @@
 				</control>
 			</control>
 		</control>
-   </controls>
+	</controls>
 </window>
