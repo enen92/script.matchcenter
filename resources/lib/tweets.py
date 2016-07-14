@@ -34,7 +34,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		
 	def __init__( self, *args, **kwargs ):
 		self.isRunning = True
+		print kwargs
 		self.hash = kwargs["hash"]
+		self.standalone = kwargs["standalone"]
 		self.teamObjs = {}
 
 	def onInit(self):
@@ -89,7 +91,8 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 	def stopRunning(self):
 		self.isRunning = False
 		self.close()
-		mainmenu.start()
+		if not self.standalone:
+			mainmenu.start()
 
 	def onAction(self,action):
 		if action.getId() == 92 or action.getId() == 10:
@@ -102,7 +105,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		elif controlId == 32514:
 			self.reset()
 
-def start(twitterhash=None):
+def start(twitterhash=None, std=False):
 	if twitterhash == None:
 		if os.path.exists(tweet_file):
 			twitter_data = json.loads(ssutils.read_file(tweet_file))
@@ -122,7 +125,7 @@ def start(twitterhash=None):
 			dialog = xbmcgui.Dialog()
 			twitterhash = dialog.input(translate(32046), type=xbmcgui.INPUT_ALPHANUM)
 			if len(twitterhash) != 0:
-				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash.replace("#",""))
+				main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash.replace("#",""), standalone=std)
 				if xbmc.getCondVisibility("Player.HasMedia") and save_hashes_during_playback == 'true':
 					main.savecurrenthash()
 				main.doModal()
@@ -131,6 +134,6 @@ def start(twitterhash=None):
 				xbmcgui.Dialog().ok(translate(32000), translate(32047))
 				mainmenu.start()
 	else:
-		main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash)
+		main = detailsDialog('script-matchcenter-Twitter.xml', addon_path, getskinfolder(), '', hash=twitterhash, standalone=std)
 		main.doModal()
 		del main	

@@ -29,6 +29,7 @@ from resources.lib import leaguetables
 from resources.lib import eventdetails
 from resources.lib import mainmenu
 from resources.lib import ignoreleagues
+from resources.lib import tweets
 from resources.lib.utilities import keymapeditor
 from resources.lib.utilities.common_addon import *
  
@@ -49,6 +50,13 @@ else:
         ignoreleagues.start()
     elif params[0] == 'keymapeditor':
         keymapeditor.run()
+    elif params[0] == 'livescores':
+        livescores.start(standalone=True)
+    elif params[0] == 'twitter':
+        if not params[1]:
+            tweets.start()
+        else:
+            tweets.start(twitterhash=params[1], standalone=True)
 
 
 try: xbmcplugin.endOfDirectory(int(sys.argv[1]))
