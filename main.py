@@ -50,6 +50,10 @@ if not params:
     mainmenu.start()
 else:
     #Integration patterns below
+    '''
+    Eg: xbmc.executebuiltin("RunScript(script.matchcenter, /eventdetails/506227)")
+    '''
+    
     if params[0] == 'ignoreleagues':
         ignoreleagues.start()
     elif params[0] == 'keymapeditor':
@@ -67,9 +71,8 @@ else:
         leaguetables.start_table(leagueid=params[1])
     elif params[0] == 'matchhistory' and params[1]:
         matchhistory.start(teamid=params[1])
-    #TODO - Not working
     elif params[0] == 'eventdetails' and params[1]:
-        eventdetails.showDetails(params[1])
+        eventdetails.showDetails(match=None,matchid=params[1])
 
 
 try: xbmcplugin.endOfDirectory(int(sys.argv[1]))

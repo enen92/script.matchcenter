@@ -267,3 +267,7 @@ msgstr "segundo"
 msgctxt "#32063"
 msgid "seconds"
 msgstr "segundos"
+
+msgctxt "#32064"
+msgid "Match Id não existe"
+msgstr ""

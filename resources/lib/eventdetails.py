@@ -434,8 +434,15 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 
 def showDetails(match, matchid = None):
 	if not match and matchid:
-		#TODO grab match object
-		pass
+		match = api.Lookups().Event(eventid=matchid)
+		if match: 
+			match = match[0]
+			match.setHomeTeamObj(api.Lookups().Team(teamid=match.idHomeTeam)[0])
+			match.setAwayTeamObj(api.Lookups().Team(teamid=match.idAwayTeam)[0])
+		else:
+			xbmcgui.Dialog().ok(translate(32000), translate(32064))
+			sys.exit(0)
+
 	main = detailsDialog('script-matchcenter-EventDetails.xml', addon_path,getskinfolder(),'', item=match )
 	main.doModal()
 	del main
