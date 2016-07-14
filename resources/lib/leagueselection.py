@@ -33,7 +33,7 @@ api = thesportsdb.Api("7723457519235")
 class Main(xbmcgui.WindowXMLDialog):
 	
 	def __init__( self, *args, **kwargs ):
-		pass
+		self.standalone = kwargs["standalone"]
 
 	def onInit(self):
 		self.getControl(32540).setImage(os.path.join(addon_path,"resources","img","goal.png"))
@@ -54,19 +54,21 @@ class Main(xbmcgui.WindowXMLDialog):
 	def onAction(self,action):
 		if action.getId() == 10 or action.getId() == 92:
 			self.close()
-			mainmenu.start()
+			if not self.standalone:
+				mainmenu.start()
 
 	def onClick(self,controlId):
 		if controlId == 32500:
 			identifier = self.getControl(32500).getSelectedItem().getProperty("identifier")
 			leaguetables.start_table(leagueid=int(identifier))
 
-def start():
+def start(standalone=False):
 	main = Main(
 			'script-matchcenter-LeagueSelection.xml',
 			addon_path,
 			getskinfolder(),
 			'',
+			standalone=standalone
 			)
 	main.doModal()
 	del main

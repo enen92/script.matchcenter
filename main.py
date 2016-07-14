@@ -30,6 +30,9 @@ from resources.lib import eventdetails
 from resources.lib import mainmenu
 from resources.lib import ignoreleagues
 from resources.lib import tweets
+from resources.lib import leagueselection
+from resources.lib import eventdetails
+from resources.lib import matchhistory
 from resources.lib.utilities import keymapeditor
 from resources.lib.utilities.common_addon import *
  
@@ -46,6 +49,7 @@ params=get_params()
 if not params:
     mainmenu.start()
 else:
+    #Integration patterns below
     if params[0] == 'ignoreleagues':
         ignoreleagues.start()
     elif params[0] == 'keymapeditor':
@@ -57,6 +61,15 @@ else:
             tweets.start()
         else:
             tweets.start(twitterhash=params[1], standalone=True)
+    elif params[0] == 'leagueselection':
+        leagueselection.start(standalone=True)
+    elif params[0] == 'leaguetables' and params[1]:
+        leaguetables.start_table(leagueid=params[1])
+    elif params[0] == 'matchhistory' and params[1]:
+        matchhistory.start(teamid=params[1])
+    #TODO - Not working
+    elif params[0] == 'eventdetails' and params[1]:
+        eventdetails.showDetails(params[1])
 
 
 try: xbmcplugin.endOfDirectory(int(sys.argv[1]))

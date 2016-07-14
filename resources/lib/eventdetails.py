@@ -432,7 +432,10 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			else:
 				self.setLineUps("home")
 
-def showDetails(match):
+def showDetails(match, matchid = None):
+	if not match and matchid:
+		#TODO grab match object
+		pass
 	main = detailsDialog('script-matchcenter-EventDetails.xml', addon_path,getskinfolder(),'', item=match )
 	main.doModal()
 	del main

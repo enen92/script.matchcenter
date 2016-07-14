@@ -39,6 +39,7 @@ class Main(xbmcgui.WindowXMLDialog):
 	
 	def __init__( self, *args, **kwargs ):
 		self.isRunning = True
+		self.standalone = kwargs["standalone"]
 		self.teamObjs = {}
 
 	def onInit(self):
@@ -219,7 +220,8 @@ class Main(xbmcgui.WindowXMLDialog):
 	def stopRunning(self):
 		self.isRunning = False
 		self.close()
-		mainmenu.start()
+		if not self.standalone:
+			mainmenu.start()
 
 	def onAction(self,action):
 		if action.getId() == 92 or action.getId() == 10:
@@ -230,12 +232,13 @@ class Main(xbmcgui.WindowXMLDialog):
 			selectedItem = self.getControl(32500).getSelectedPosition()
 			eventdetails.showDetails(self.livecopy[selectedItem])
 
-def start():
+def start(standalone=False):
 	main = Main(
 			'script-matchcenter-Livescores.xml',
 			addon_path,
 			getskinfolder(),
 			'',
+			standalone=standalone
 			)
 	main.doModal()
 	del main
