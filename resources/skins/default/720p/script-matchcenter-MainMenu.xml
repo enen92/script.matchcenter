@@ -146,7 +146,7 @@
 					</itemlayout>
 					<focusedlayout height="225" width="323">
 						<control type="group">
-							<depth>DepthContentPopout</depth>
+							<depth>0.10</depth>
 							<animation type="Focus" reversible="false">
 								<effect type="zoom" center="auto" start="100" end="108" time="250" tween="sine" />
 							</animation>
