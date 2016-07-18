@@ -3,9 +3,9 @@
 
 This addon brings a window that can be mapped to a remote key to show livescores for the current live football games, access match information (goals, cards, subs, lineups) or follow what others are saying about the match in twitter.
 
-Powered by: http://www.thesportsdb.com
+**Powered by:** http://www.thesportsdb.com
 
-** Screenshots **
+**Screenshots**
 ![1](http://i.imgur.com/7jNhe1L.png)
 ![2](http://i.imgur.com/f59RKlE.png)
 ![3](http://i.imgur.com/wpYI1nz.png)
