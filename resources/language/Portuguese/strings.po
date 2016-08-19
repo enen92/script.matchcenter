@@ -269,5 +269,17 @@ msgid "seconds"
 msgstr "segundos"
 
 msgctxt "#32064"
-msgid "Match Id não existe"
-msgstr ""
+msgid "Match Id does not exist"
+msgstr "Match Id não existe"
+
+msgctxt "#32065"
+msgid "This function allows you to start the addon by pressing a key on your remote control. To use this function you need to use the Keymap Editor addon from the official repository. Match Center will start it automatically for you once you close this dialog. Once the Keymap editor addon starts you need to follow the following instructions.[CR][CR]1) Select edit[CR]2) Select global[CR]3) Select addons [CR]4) Select \"Launch MatchCenter\"[CR]5)Press any key on your remote control[CR]6)Go back three times[CR]7)Hit save[CR][CR]After a Kodi reboot you can start this addon by just pressing the key you selected"
+msgstr "Esta função permite-lhe que inicie o addon pressionando um determinado botão no seu comando. Para utilizar esta funcionalidade necessita de utilizar o addon KeyMap editor disponível no repositório oficial do Kodi. O Match Center irá iniciar esse addon automaticamente assim que fechar a corrente janela. Assim que o Keymap editor addon iniciar faça o seguinte:[CR][CR]1) Seleccione editar[CR]2) Seleccione global[CR]3) Seleccione addons [CR]4) Seleccione \"Iniciar MatchCenter\"[CR]5)Pressione a tecla desejada no seu comando[CR]6)Volte atrás três vezes.[CR]7)Clique em salvar[CR][CR]Após o reboot do Kodi, poderá iniciar este addon apenas pressionando a tecla que escolheu previamente."
+
+msgctxt "#32066"
+msgid "An error has occured. Please provide a log file to the developer."
+msgstr "Ocorreu um erro. Por favor forneca um ficheiro de log ao desenvolvedor para correcao."
+
+msgctxt "#32067"
+msgid "Are you sure you want to define a keymap for this addon?"
+msgstr "Tem a certeza que deseja definir um novo Keymap para este addon?"

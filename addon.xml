@@ -5,6 +5,7 @@
 		<import addon="script.module.thesportsdb" version="1.0.1"/>
 		<import addon="script.module.pytz" version="2014.2"/>
 		<import addon="script.module.twitter" version="1.17.1"/>
+		<import addon="script.keymap" version="1.0.10"/>
 	</requires>
 	<extension point="xbmc.python.script" library="main.py" />
 	<extension point="xbmc.addon.metadata">
