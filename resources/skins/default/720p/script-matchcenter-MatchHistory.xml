@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <window type="window">
 	<depth>0.52</depth>
-	<defaultcontrol always="true">32500</defaultcontrol>
 	<animation type="WindowOpen" reversible="false">
 		<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
 		<effect type="fade" delay="160" end="100" time="240" />
@@ -106,7 +105,7 @@
 				<textcolor>selected</textcolor>
 				<shadowcolor>AA000000</shadowcolor>
 			</control>
-			<control type="list" id="32502">
+			<control type="panel" id="32502">
 				<left>65</left>
 				<top>125</top>
 				<width>575</width>
@@ -116,7 +115,7 @@
 				<onleft>32503</onleft>
 				<onright>32503</onright>
 				<scrolltime>200</scrolltime>
-				<itemlayout height="114" width="575">
+				<itemlayout height="114" width="578">
 					<control type="image">
 						<left>-25</left>
 						<top>-20</top>
@@ -203,7 +202,7 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 				</itemlayout>
-				<focusedlayout height="114" width="575">
+				<focusedlayout height="114" width="578">
 					<control type="image">
 						<left>-25</left>
 						<top>-20</top>
@@ -299,7 +298,7 @@
 					</control>
 				</focusedlayout>
 			</control>
-			<control type="list" id="32503">
+			<control type="panel" id="32503">
 				<left>640</left>
 				<top>125</top>
 				<width>575</width>
@@ -309,7 +308,7 @@
 				<onleft>32502</onleft>
 				<onright>32502</onright>
 				<scrolltime>200</scrolltime>
-				<itemlayout height="114" width="576">
+				<itemlayout height="114" width="578">
 					<control type="image">
 						<left>-25</left>
 						<top>-20</top>
@@ -396,7 +395,7 @@
 						<include>VisibleFadeEffect</include>
 					</control>
 				</itemlayout>
-				<focusedlayout height="114" width="576">
+				<focusedlayout height="114" width="578">
 					<control type="image">
 						<left>-25</left>
 						<top>-20</top>

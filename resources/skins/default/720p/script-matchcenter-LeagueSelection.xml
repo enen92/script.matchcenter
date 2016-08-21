@@ -12,7 +12,7 @@
 	</animation>
 	<controls>
 		<control type="group">
-			<left>143</left>
+			<left>144</left>
 			<top>10</top>
 			<control type="image">
 				<left>0</left>
@@ -60,7 +60,7 @@
 				<onclick>noop</onclick>
 			</control>
 			<control type="radiobutton" id="22000">
-				<left>969</left>
+				<left>915</left>
 				<top>11</top>
 				<width>48</width>
 				<height>48</height>
@@ -69,7 +69,6 @@
 				<texturefocus>-</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<label></label>
-				<animation effect="slide" end="-70,0" time="0" condition="true">Conditional</animation>
 				<textureradioofffocus colordiffuse="EEFFFFFF">close.png</textureradioofffocus>
 				<textureradiooffnofocus colordiffuse="EEFFFFFF">logo.png</textureradiooffnofocus>
 				<textureradioonfocus colordiffuse="EEFFFFFF">close.png</textureradioonfocus>
@@ -90,7 +89,6 @@
 					<pagecontrol>61</pagecontrol>
 					<orientation>vertical</orientation>
 					<scrolltime>200</scrolltime>
-					<animation effect="slide" start="0,0" end="10,0" time="0" condition="!Control.IsVisible(61)">Conditional</animation>
 					<itemlayout height="207" width="319">
 						<control type="image">
 							<top>5</top>
@@ -145,7 +143,7 @@
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="61">
-					<left>987</left>
+					<left>1107</left>
 					<top>80</top>
 					<width>15</width>
 					<height>629</height>
@@ -161,7 +159,6 @@
 					<ondown>32500</ondown>
 					<onup>32500</onup>
 					<visible>IsEmpty(Window(home).Property(no-games))+IsEmpty(Window(home).Property(loading))</visible>
-					<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
 				</control>
 			</control>
 		</control>

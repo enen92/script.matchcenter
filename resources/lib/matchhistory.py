@@ -93,7 +93,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 
 						#Set event time
 						try:
-							db_time = pytz.timezone(str(pytz.timezone("Europe/London"))).localize(event.eventDateTime)
+							db_time = pytz.timezone(str(pytz.timezone("Etc/UTC"))).localize(event.eventDateTime)
 							my_location=pytz.timezone(pytz.all_timezones[int(my_timezone)])
 							converted_time=db_time.astimezone(my_location)
 							starttime=converted_time.strftime("%a, %d %b %Y %H:%M")

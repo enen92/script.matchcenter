@@ -279,7 +279,8 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			self.getControl(32521).setLabel(self.LineUpTeamObj.strTeam)
 
 		#Set team Badge
-		self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
+		if self.LineUpTeamObj.strTeamBadge:
+			self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
 		#Set team formation label
 		if self.formationlabel:
 			self.getControl(32518).setLabel(self.formationlabel)
@@ -349,9 +350,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			image_size = positions.getShirtHeight(pitchHeight,goalkeeper[1])
 			image_x = int(goalkeeper[0]*float(pitchWidth))+int(0.15*image_size)
 			image_y =  int(goalkeeper[1]*float(pitchHeight))+int(0.15*image_size)
-			image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey )
+			if self.LineUpTeamObj.strTeamJersey:
+				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey )
+				self.controls.append(image)
+			else:
+				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
 			label = positions.getLabel(image, "[B]" + self.lineupgoalkeeper + "[/B]")
-			self.controls.append(image)
 			self.controls.append(label)
 			#defenders
 			defenders = formation["defenders"]
@@ -361,9 +365,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,defender[1])
 					image_x = int(defender[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(defender[1]*float(pitchHeight))+int(0.15*image_size)
-					image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+					if self.LineUpTeamObj.strTeamJersey:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+						self.controls.append(image)
+					else:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
 					label = positions.getLabel(image,"[B]" + self.lineupdefenders[i] + "[/B]")
-					self.controls.append(image)
 					self.controls.append(label)
 					i += 1
 			#midfielders
@@ -374,9 +381,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,midfielder[1])
 					image_x = int(midfielder[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(midfielder[1]*float(pitchHeight))+int(0.15*image_size)
-					image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+					if self.LineUpTeamObj.strTeamJersey:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+						self.controls.append(image)
+					else:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
 					label = positions.getLabel(image,"[B]" + self.lineupmidfielders[i] + "[/B]")
-					self.controls.append(image)
 					self.controls.append(label)
 					i += 1
 			#forwarders
@@ -387,9 +397,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,forwarder[1])
 					image_x = int(forwarder[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(forwarder[1]*float(pitchHeight))+int(0.15*image_size)
-					image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+					if self.LineUpTeamObj.strTeamJersey:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
+						self.controls.append(image)
+					else:
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
 					label = positions.getLabel(image,"[B]" + self.lineupforwarders[i] + "[/B]")
-					self.controls.append(image)
 					self.controls.append(label)
 					i += 1
 
