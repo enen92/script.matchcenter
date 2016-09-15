@@ -108,22 +108,23 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 
 		self.getControl(32500).setLabel(header)
 		
-		if self.match.HomeTeamObj.strTeamBadge:
-			self.getControl(32501).setImage(self.match.HomeTeamObj.strTeamBadge)
-		if self.match.HomeTeamObj.strTeamJersey:
-			self.getControl(32502).setImage(self.match.HomeTeamObj.strTeamJersey)
+		if self.match.HomeTeamObj:
+			if self.match.HomeTeamObj.strTeamBadge:
+				self.getControl(32501).setImage(self.match.HomeTeamObj.strTeamBadge)
+			if self.match.HomeTeamObj.strTeamJersey:
+				self.getControl(32502).setImage(self.match.HomeTeamObj.strTeamJersey)
 
+		self.getControl(32503).setLabel(self.match.HomeTeam)
+		self.getControl(32506).setLabel(self.match.AwayTeam)
 		if show_alternative == "true":
-			self.getControl(32503).setLabel(self.match.HomeTeamObj.AlternativeNameFirst)
-			self.getControl(32506).setLabel(self.match.AwayTeamObj.AlternativeNameFirst)
-		else:
-			self.getControl(32503).setLabel(self.match.HomeTeamObj.strTeam)
-			self.getControl(32506).setLabel(self.match.AwayTeamObj.strTeam)
+			if self.match.HomeTeamObj: self.getControl(32503).setLabel(self.match.HomeTeamObj.AlternativeNameFirst)
+			if self.match.AwayTeamObj: self.getControl(32506).setLabel(self.match.AwayTeamObj.AlternativeNameFirst)			
 
-		if self.match.AwayTeamObj.strTeamBadge:
-			self.getControl(32504).setImage(self.match.AwayTeamObj.strTeamBadge)
-		if self.match.AwayTeamObj.strTeamJersey:
-			self.getControl(32505).setImage(self.match.AwayTeamObj.strTeamJersey)
+		if self.match.AwayTeamObj:
+			if self.match.AwayTeamObj.strTeamBadge:
+				self.getControl(32504).setImage(self.match.AwayTeamObj.strTeamBadge)
+			if self.match.AwayTeamObj.strTeamJersey:
+				self.getControl(32505).setImage(self.match.AwayTeamObj.strTeamJersey)
 		
 		if matchHomeGoals and matchAwayGoals:
 			self.getControl(32507).setLabel(str(matchHomeGoals)+"-"+str(matchAwayGoals))
@@ -224,7 +225,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		
 		if team == "home":
 			if 'idEvent' not in self.match.__dict__.keys():
-				self.LineUpTeamObj = self.match.HomeTeamObj
+				if self.match.HomeTeamObj: self.LineUpTeamObj = self.match.HomeTeamObj
+				else: self.LineUpTeamObj = None
+				self.teamname = self.match.HomeTeam
 				self.formationlabel = self.match.HomeTeamFormation
 				self.lineupgoalkeeper = self.match.HomeLineupGoalkeeper
 				self.lineupdefenders = self.match.HomeLineupDefense
@@ -247,7 +250,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			self.getControl(32527).setLabel(translate(32027))
 		else:
 			if 'idEvent' not in self.match.__dict__.keys():
-				self.LineUpTeamObj = self.match.AwayTeamObj
+				if self.match.AwayTeamObj: self.LineUpTeamObj = self.match.AwayTeamObj
+				else: self.LineUpTeamObj = None
+				self.teamname = self.match.AwayTeam
 				self.formationlabel = self.match.AwayTeamFormation
 				self.lineupgoalkeeper = self.match.AwayLineupGoalkeeper
 				self.lineupdefenders = self.match.AwayLineupDefense
@@ -273,15 +278,20 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		self.getControl(32522).setLabel(translate(32029) + ":")
 		self.getControl(32523).setLabel(translate(32030) + ":")
 
-		#Set team Name
-		if show_alternative == "true":
-			self.getControl(32521).setLabel(self.LineUpTeamObj.AlternativeNameFirst)
-		else:
-			self.getControl(32521).setLabel(self.LineUpTeamObj.strTeam)
+		#Set team information
+		#Name
+		self.getControl(32521).setLabel(self.teamname)
+		if self.LineUpTeamObj:
+			if show_alternative == "true":
+				self.getControl(32521).setLabel(self.LineUpTeamObj.AlternativeNameFirst)
+			
+			#Set team Badge
+			if self.LineUpTeamObj.strTeamBadge:
+				self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
+			else:
+				#TODO placeholder
+				self.getControl(32520).setImage("")
 
-		#Set team Badge
-		if self.LineUpTeamObj.strTeamBadge:
-			self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
 		#Set team formation label
 		if self.formationlabel:
 			self.getControl(32518).setLabel(self.formationlabel)
@@ -351,7 +361,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			image_size = positions.getShirtHeight(pitchHeight,goalkeeper[1])
 			image_x = int(goalkeeper[0]*float(pitchWidth))+int(0.15*image_size)
 			image_y =  int(goalkeeper[1]*float(pitchHeight))+int(0.15*image_size)
-			if self.LineUpTeamObj.strTeamJersey:
+			if self.LineUpTeamObj and self.LineUpTeamObj.strTeamJersey:
 				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey )
 				self.controls.append(image)
 			else:
@@ -366,7 +376,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,defender[1])
 					image_x = int(defender[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(defender[1]*float(pitchHeight))+int(0.15*image_size)
-					if self.LineUpTeamObj.strTeamJersey:
+					if self.LineUpTeamObj and self.LineUpTeamObj.strTeamJersey:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:
@@ -382,7 +392,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,midfielder[1])
 					image_x = int(midfielder[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(midfielder[1]*float(pitchHeight))+int(0.15*image_size)
-					if self.LineUpTeamObj.strTeamJersey:
+					if self.LineUpTeamObj and self.LineUpTeamObj.strTeamJersey:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:
@@ -398,7 +408,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 					image_size = positions.getShirtHeight(pitchHeight,forwarder[1])
 					image_x = int(forwarder[0]*float(pitchWidth))+int(0.15*image_size)
 					image_y =  int(forwarder[1]*float(pitchHeight))+int(0.15*image_size)
-					if self.LineUpTeamObj.strTeamJersey:
+					if self.LineUpTeamObj and self.LineUpTeamObj.strTeamJersey:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:

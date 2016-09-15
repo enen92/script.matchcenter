@@ -16,11 +16,12 @@
 			<top>24</top>
 			<width>966</width>
 			<height>663</height>
+			<visible>IsEmpty(Window(home).Property(loading))</visible>
 			<texture border="2">dialog-bg-solid.png</texture>
 		</control>
 		<control type="group">
 			<control type="group">
-				<control type="list" id="32500">
+				<control type="panel" id="32500">
 					<left>40</left>
 					<top>26</top>
 					<width>950</width>
@@ -527,18 +528,18 @@
 		<!--Busy control-->
 		<control type="image" id="32540">
 			<description>Busy animation</description>
-			<posx>450</posx>
-			<posy>270</posy>
+			<posx>750</posx>
+			<posy>610</posy>
 			<width>120</width>
 			<height>120</height>
 			<texture></texture>
 			<aspectratio>keep</aspectratio>
-			<animation effect="rotate" start="0" end="360" center="510,330" time="1200" loop="true" condition="true">conditional</animation>
+			<animation effect="rotate" start="0" end="360" center="810,670" time="1200" loop="true" condition="true">conditional</animation>
 			<visible>!IsEmpty(Window(home).Property(loading))</visible>
 		</control>
 		<control type="label">
-			<top>280</top>
-			<left>400</left>
+			<top>630</top>
+			<left>700</left>
 			<width>650</width>
 			<height>90</height>
 			<font>font35_title</font>
