@@ -174,10 +174,12 @@ class Main(xbmcgui.WindowXMLDialog):
 						#set team badge
 						if livegame.HomeTeamObj and livegame.HomeTeamObj.strTeamBadge:
 							item.setProperty('home_team_logo',livegame.HomeTeamObj.strTeamBadge)
-						#else: placeholder
+						else: 
+							item.setProperty('home_team_logo',os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 						if livegame.AwayTeamObj and livegame.AwayTeamObj.strTeamBadge:
 							item.setProperty('away_team_logo',livegame.AwayTeamObj.strTeamBadge)
-						#else: placeholder
+						else: 
+							item.setProperty('away_team_logo',os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 
 						if livegame.HomeGoals and bool(int(livegame.HomeGoals)>0):
 							item.setProperty('has_home_goals',os.path.join(addon_path,"resources","img","goal.png"))

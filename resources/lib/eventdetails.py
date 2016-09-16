@@ -111,8 +111,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		if self.match.HomeTeamObj:
 			if self.match.HomeTeamObj.strTeamBadge:
 				self.getControl(32501).setImage(self.match.HomeTeamObj.strTeamBadge)
+			else:
+				self.getControl(32501).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 			if self.match.HomeTeamObj.strTeamJersey:
 				self.getControl(32502).setImage(self.match.HomeTeamObj.strTeamJersey)
+			else:
+				self.getControl(32502).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
 
 		self.getControl(32503).setLabel(self.match.HomeTeam)
 		self.getControl(32506).setLabel(self.match.AwayTeam)
@@ -123,8 +127,12 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		if self.match.AwayTeamObj:
 			if self.match.AwayTeamObj.strTeamBadge:
 				self.getControl(32504).setImage(self.match.AwayTeamObj.strTeamBadge)
+			else:
+				self.getControl(32504).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 			if self.match.AwayTeamObj.strTeamJersey:
 				self.getControl(32505).setImage(self.match.AwayTeamObj.strTeamJersey)
+			else:
+				self.getControl(32505).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
 		
 		if matchHomeGoals and matchAwayGoals:
 			self.getControl(32507).setLabel(str(matchHomeGoals)+"-"+str(matchAwayGoals))
@@ -289,8 +297,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 			if self.LineUpTeamObj.strTeamBadge:
 				self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
 			else:
-				#TODO placeholder
-				self.getControl(32520).setImage("")
+				self.getControl(32520).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 
 		#Set team formation label
 		if self.formationlabel:
@@ -365,7 +372,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey )
 				self.controls.append(image)
 			else:
-				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
+				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
 			label = positions.getLabel(image, "[B]" + self.lineupgoalkeeper + "[/B]")
 			self.controls.append(label)
 			#defenders
@@ -380,7 +387,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:
-						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
 					label = positions.getLabel(image,"[B]" + self.lineupdefenders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1
@@ -396,7 +403,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:
-						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
 					label = positions.getLabel(image,"[B]" + self.lineupmidfielders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1
@@ -412,7 +419,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, self.LineUpTeamObj.strTeamJersey)
 						self.controls.append(image)
 					else:
-						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, "" )
+						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
 					label = positions.getLabel(image,"[B]" + self.lineupforwarders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1
