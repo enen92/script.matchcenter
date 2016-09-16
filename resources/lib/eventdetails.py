@@ -117,6 +117,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				self.getControl(32502).setImage(self.match.HomeTeamObj.strTeamJersey)
 			else:
 				self.getControl(32502).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
+		else:
+			self.getControl(32501).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
+			self.getControl(32502).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
 
 		self.getControl(32503).setLabel(self.match.HomeTeam)
 		self.getControl(32506).setLabel(self.match.AwayTeam)
@@ -133,6 +136,9 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				self.getControl(32505).setImage(self.match.AwayTeamObj.strTeamJersey)
 			else:
 				self.getControl(32505).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
+		else:
+			self.getControl(32504).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
+			self.getControl(32505).setImage(os.path.join(addon_path,"resources","img","nokit_placeholder.png"))
 		
 		if matchHomeGoals and matchAwayGoals:
 			self.getControl(32507).setLabel(str(matchHomeGoals)+"-"+str(matchAwayGoals))
@@ -298,6 +304,8 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				self.getControl(32520).setImage(self.LineUpTeamObj.strTeamBadge)
 			else:
 				self.getControl(32520).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
+		else:
+			self.getControl(32520).setImage(os.path.join(addon_path,"resources","img","nobadge_placeholder.png"))
 
 		#Set team formation label
 		if self.formationlabel:
