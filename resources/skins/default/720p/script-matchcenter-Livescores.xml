@@ -526,19 +526,27 @@
 			</control>
 		</control>
 		<!--Busy control-->
+		<control type="image">
+			<left>680</left>
+			<top>550</top>
+			<width>550</width>
+			<height>150</height>
+			<visible>!IsEmpty(Window(home).Property(loading))</visible>
+			<texture border="2">dialog-bg-solid.png</texture>
+		</control>
 		<control type="image" id="32540">
 			<description>Busy animation</description>
 			<posx>750</posx>
-			<posy>610</posy>
+			<posy>560</posy>
 			<width>120</width>
 			<height>120</height>
 			<texture></texture>
 			<aspectratio>keep</aspectratio>
-			<animation effect="rotate" start="0" end="360" center="810,670" time="1200" loop="true" condition="true">conditional</animation>
+			<animation effect="rotate" start="0" end="360" center="810,620" time="1200" loop="true" condition="true">conditional</animation>
 			<visible>!IsEmpty(Window(home).Property(loading))</visible>
 		</control>
 		<control type="label">
-			<top>630</top>
+			<top>580</top>
 			<left>700</left>
 			<width>650</width>
 			<height>90</height>
