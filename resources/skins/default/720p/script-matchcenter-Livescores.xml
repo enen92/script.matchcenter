@@ -11,7 +11,7 @@
 		<effect type="fade" start="100" end="0" time="240" />
 	</animation>
 	<controls>
-		<control type="image">
+		<control type="image" id="32502">
 			<left>158</left>
 			<top>24</top>
 			<width>966</width>
@@ -22,7 +22,7 @@
 		<control type="group">
 			<control type="group">
 				<control type="panel" id="32500">
-					<left>40</left>
+					<left>160</left>
 					<top>26</top>
 					<width>950</width>
 					<height>660</height>
@@ -31,8 +31,6 @@
 					<onleft>62</onleft>
 					<onright>61</onright>
 					<pagecontrol>61</pagecontrol>
-					<animation effect="slide" start="0,0" end="10,0" time="0" condition="!Control.IsVisible(61)">Conditional</animation>
-					<animation effect="slide" end="120,0" time="0" condition="!Control.IsVisible(5)">Conditional</animation>
 					<itemlayout height="165" width="945">
 						<control type="image">
 							<top>-20</top>

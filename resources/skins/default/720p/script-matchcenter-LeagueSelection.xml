@@ -14,14 +14,14 @@
 		<control type="group">
 			<left>144</left>
 			<top>10</top>
-			<control type="image">
+			<control type="image" id="32541">
 				<left>0</left>
 				<top>0</top>
 				<width>979</width>
 				<height>698</height>
 				<texture border="2">dialog-bg-solid.png</texture>
 			</control>
-			<control type="image">
+			<control type="image" id="32542">
 				<left>0</left>
 				<top>0</top>
 				<width>979</width>
@@ -60,7 +60,7 @@
 				<onclick>noop</onclick>
 			</control>
 			<control type="radiobutton" id="22000">
-				<left>915</left>
+				<left>900</left>
 				<top>11</top>
 				<width>48</width>
 				<height>48</height>

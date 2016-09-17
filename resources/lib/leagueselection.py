@@ -50,6 +50,9 @@ class Main(xbmcgui.WindowXMLDialog):
 					items.append(item)
 		xbmc.executebuiltin("ClearProperty(loading,Home)")
 		self.getControl(32500).addItems(items)
+		if len(items) <= 9:
+			self.getControl(32541).setWidth(962)
+			self.getControl(32542).setWidth(962)
 
 	def onAction(self,action):
 		if action.getId() == 10 or action.getId() == 92:

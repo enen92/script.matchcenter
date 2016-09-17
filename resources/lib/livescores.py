@@ -254,6 +254,9 @@ class Main(xbmcgui.WindowXMLDialog):
 			self.getControl(32500).reset()
 			xbmc.executebuiltin("ClearProperty(no-games,Home)")
 			self.getControl(32500).addItems(items)
+			#Resize dialog if no scrollbar is showing
+			if len(items) <= 4:
+				self.getControl(32502).setWidth(955)
 			self.setFocusId(32500)
 			#Set focus on previously focused match
 			if match_identifier:

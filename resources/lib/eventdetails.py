@@ -182,8 +182,10 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		awayteamevents = {}
 		for key,var in vars:
 			if key and var:
+				print var
 				if ";" in var:
 					events = var.split(";")
+					print events
 					if events:
 						for event in events:
 							stringregex = re.findall("(\d+)'\:(.*)", event)
