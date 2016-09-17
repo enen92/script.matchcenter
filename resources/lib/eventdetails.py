@@ -164,6 +164,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 		#Home Team Event Details
 		vars = [("goal",matchHomeGoalDetails),("redcard",matchHomeTeamRedCardDetails),("yellowcard",matchHomeTeamYellowCardDetails),("sub",matchHomeSubDetails)]
 		hometeamevents = {}
+		home_subs = {}
 		for key,var in vars:
 			if key and var:
 				if ";" in var:
@@ -173,29 +174,84 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 							stringregex = re.findall("(\d+)'\:(.*)", event)
 							if stringregex:
 								for time,strevent in stringregex:
-									if not int(time) in hometeamevents.keys():
-										hometeamevents[int(time)] = [(key,strevent)]
+									if key == "sub":
+										if time in home_subs.keys():
+											if strevent.strip().startswith("in"):
+												home_subs[time]["in"] = strevent
+												if "out" in home_subs[time].keys():
+													if not int(time) in hometeamevents.keys():
+														hometeamevents[int(time)] = [(key,home_subs[time]["out"] + " |" + home_subs[time]["in"])]
+													else:
+														hometeamevents[int(time)].append((key,home_subs[time]["out"] + " |" + home_subs[time]["in"]))				
+													#Remove item from dict (we might have more than one sub associated to a given minute)
+													home_subs.pop(time, None)
+													
+											elif strevent.strip().startswith("out"):
+												home_subs[time]["out"] = strevent
+												if "in" in home_subs[time].keys():
+													if not int(time) in hometeamevents.keys():
+														hometeamevents[int(time)] = [(key,home_subs[time]["out"] + " |" + home_subs[time]["in"])]
+													else:
+														hometeamevents[int(time)].append((key,home_subs[time]["out"] + " |" + home_subs[time]["in"]))
+													#Remove item from dict (we might have more than one sub associated to a given minute)
+													home_subs.pop(time, None)
+										else:
+											home_subs[time] = {}
+											if strevent.strip().startswith("in"):
+												home_subs[time]["in"] = strevent
+											elif strevent.strip().startswith("out"):
+												home_subs[time]["out"] = strevent
 									else:
-										hometeamevents[int(time)].append((key,strevent))
+										if not int(time) in hometeamevents.keys():
+											hometeamevents[int(time)] = [(key,strevent)]
+										else:
+											hometeamevents[int(time)].append((key,strevent))
 		#Away Team Event Details
 		vars = [("goal",matchAwayGoalDetails),("redcard",matchAwayTeamRedCardDetails),("yellowcard",matchAwayTeamYellowCardDetails),("sub",matchAwaySubDetails)]
 		awayteamevents = {}
+		away_subs = {}
 		for key,var in vars:
 			if key and var:
-				print var
 				if ";" in var:
 					events = var.split(";")
-					print events
 					if events:
 						for event in events:
 							stringregex = re.findall("(\d+)'\:(.*)", event)
 							if stringregex:
 								for time,strevent in stringregex:
-									if not strevent: strevent = translate(32025)
-									if not int(time) in awayteamevents.keys():
-										awayteamevents[int(time)] = [(key,strevent)]
+									if key == "sub":
+										if time in away_subs.keys():
+											if strevent.strip().startswith("in"):
+												away_subs[time]["in"] = strevent
+												if "out" in away_subs[time].keys():
+													if not int(time) in awayteamevents.keys():
+														awayteamevents[int(time)] = [(key,away_subs[time]["out"] + " |" + away_subs[time]["in"])]
+													else:
+														awayteamevents[int(time)].append((key,away_subs[time]["out"] + " |" + away_subs[time]["in"]))				
+													#Remove item from dict (we might have more than one sub associated to a given minute)
+													away_subs.pop(time, None)
+													
+											elif strevent.strip().startswith("out"):
+												away_subs[time]["out"] = strevent
+												if "in" in away_subs[time].keys():
+													if not int(time) in awayteamevents.keys():
+														awayteamevents[int(time)] = [(key,away_subs[time]["out"] + " |" + away_subs[time]["in"])]
+													else:
+														awayteamevents[int(time)].append((key,away_subs[time]["out"] + " |" + away_subs[time]["in"]))
+													#Remove item from dict (we might have more than one sub associated to a given minute)
+													away_subs.pop(time, None)													
+										else:
+											away_subs[time] = {}
+											if strevent.strip().startswith("in"):
+												away_subs[time]["in"] = strevent	
+											elif strevent.strip().startswith("out"):
+												away_subs[time]["out"] = strevent
 									else:
-										awayteamevents[int(time)].append((key,strevent))
+										if not strevent: strevent = translate(32025)
+										if not int(time) in awayteamevents.keys():
+											awayteamevents[int(time)] = [(key,strevent.strip())]
+										else:
+											awayteamevents[int(time)].append((key,strevent.strip()))
 
 		#set home and away event details
 		#set home
