@@ -54,9 +54,9 @@ class Main(xbmcgui.WindowXMLDialog):
 			self.ignored_leagues = []
 		xbmc.executebuiltin("ClearProperty(no-games,Home)")
 		self.getControl(32540).setImage(os.path.join(addon_path,"resources","img","goal.png"))
-		xbmc.executebuiltin("SetProperty(loading,1,home)")
+		xbmc.executebuiltin("SetProperty(loading-script-matchcenter-livescores,1,home)")
 		self.livescoresThread()
-		xbmc.executebuiltin("ClearProperty(loading,Home)")
+		xbmc.executebuiltin("ClearProperty(loading-script-matchcenter-livescores,Home)")
 		i = 0
 		while self.isRunning:
 			if (float(i*200)/(livescores_update_time*60*1000)).is_integer() and ((i*200)/(3*60*1000)) != 0:
@@ -82,7 +82,7 @@ class Main(xbmcgui.WindowXMLDialog):
 		return
 
 	def set_no_games(self):
-		xbmc.executebuiltin("ClearProperty(loading,Home)")
+		xbmc.executebuiltin("ClearProperty(loading-script-matchcenter-livescores,Home)")
 		self.getControl(32541).setImage(os.path.join(addon_path,"resources","img","baliza.png"))
 		xbmc.executebuiltin("SetProperty(no-games,1,home)")
 		return
@@ -253,6 +253,7 @@ class Main(xbmcgui.WindowXMLDialog):
 			
 			self.getControl(32500).reset()
 			xbmc.executebuiltin("ClearProperty(no-games,Home)")
+			self.items = items
 			self.getControl(32500).addItems(items)
 			#Resize dialog if no scrollbar is showing
 			if len(items) <= 4:
@@ -281,6 +282,27 @@ class Main(xbmcgui.WindowXMLDialog):
 	def onAction(self,action):
 		if action.getId() == 92 or action.getId() == 10:
 			self.stopRunning()
+		elif action.getId() == 117:
+			choose = xbmcgui.Dialog().select("Choose an option",["Ignore this league"])
+			if choose > -1:
+				panel = self.getControl(32500)
+				league = panel.getSelectedItem().getProperty("league_and_round").split(" - ")
+				if len(league) > 1 and league[0]:
+					items = []
+					events_list = []
+					i = 0
+					for item in self.items:
+						if league[0].lower() not in item.getProperty("league_and_round").lower():
+							items.append(item)
+							events_list.append(self.livecopy[i])
+						i += 1
+					panel.reset()
+					panel.addItems(items)
+					self.items = items
+					self.livecopy = events_list
+					self.already_ignored = eval(FileIO.fileread(ignored_league_list_file))
+					self.already_ignored.append(league[0])
+					FileIO.filewrite(ignored_league_list_file,str(self.already_ignored))
 
 	def onClick(self,controlId):
 		if controlId == 32500:

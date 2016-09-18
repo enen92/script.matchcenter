@@ -439,6 +439,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 				self.controls.append(image)
 			else:
 				image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
+				self.controls.append(image)
 			label = positions.getLabel(image, "[B]" + self.lineupgoalkeeper + "[/B]")
 			self.controls.append(label)
 			#defenders
@@ -454,6 +455,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						self.controls.append(image)
 					else:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
+						self.controls.append(image)
 					label = positions.getLabel(image,"[B]" + self.lineupdefenders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1
@@ -470,6 +472,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						self.controls.append(image)
 					else:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
+						self.controls.append(image)
 					label = positions.getLabel(image,"[B]" + self.lineupmidfielders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1
@@ -486,6 +489,7 @@ class detailsDialog(xbmcgui.WindowXMLDialog):
 						self.controls.append(image)
 					else:
 						image = xbmcgui.ControlImage(image_x,image_y,image_size,image_size, os.path.join(addon_path,"resources","img","nokit_placeholder.png") )
+						self.controls.append(image)
 					label = positions.getLabel(image,"[B]" + self.lineupforwarders[i] + "[/B]")
 					self.controls.append(label)
 					i += 1

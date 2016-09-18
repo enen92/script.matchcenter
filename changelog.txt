@@ -4,6 +4,8 @@ V.2.1.1 (18/9/2016)
 -Group substitutions
 -Allow match info display even if no teams match against the database
 -Resize windows if scrollbar is not visible
+-Ignore leagues from the context menu of the livescores dialog
+-Better loading controls
 
 V.2.1.0 (12/9/2016):
 -Implemented cache for leagues, leagueteams and individual teams to speed things up and minimize requests
