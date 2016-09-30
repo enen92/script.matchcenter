@@ -1,3 +1,7 @@
+V.2.1.2 (30/9/2016)
+-Fix addon xml
+-Bug fixes in the eventdetails dialog for past events
+
 V.2.1.1 (18/9/2016)
 -Do not show dialog while livescores are loading
 -Fix english league 1 table
